@@ -1,9 +1,11 @@
 import { Form, Input, Button } from "antd";
 import "antd/dist/antd.css";
+import { register } from "../../redux/actions/user";
 
 const Register = () => {
   const onFinish = (values) => {
-    console.log("Success:", values);
+    console.log(values)
+    register(values)
   };
 
   return (
