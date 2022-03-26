@@ -1,12 +1,12 @@
 import store from "../store";
 import axios from "axios";
 
-const API_URL ="http://localhost:5500"
+const API_URL = "http://localhost:5500"
 export const register = async (dataUser) => {
     try {
         let res = await axios.post(API_URL + "/users/register", dataUser);
-      return res;
+        return res;
     } catch (error) {
-      console.log(error);
+        console.log(error);
     }
-  };
+};
