@@ -1,11 +1,17 @@
 import { Form, Input, Button } from "antd";
 import "antd/dist/antd.css";
 import { register } from "../../redux/actions/user";
+import { notification } from "antd";
 
 const Register = () => {
-  const onFinish = (values) => {
-    console.log(values)
-    register(values)
+  const onFinish = async (values) => {
+    const res = await register(values);
+    if(!res.data.includes('contraseña')){
+      notification.success({ message: "Revisa tu correo",description: res.data });
+    }
+    if(res.data.includes('contraseña')){
+      notification.error({ message: "Error",description: res.data });
+    }
   };
 
   return (
