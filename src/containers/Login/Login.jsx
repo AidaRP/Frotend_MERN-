@@ -9,7 +9,6 @@ const Login = () => {
       
     const onFinish = async (values) => {
         const res = await login(values);
-        console.log(res)
         if(!res.data.includes('email' && 'contraseña')){
         notification.success({ message: "Bienvenida, bienvenido y/o bienvenide, !!!WELCOME TO THE PARTY🥳!!!",description: res.data });
         }
@@ -36,7 +35,7 @@ const Login = () => {
             >
             <Form.Item
                 label="Email"
-                name="Email"
+                name="email"
                 rules={[
                 {
                     required: true,

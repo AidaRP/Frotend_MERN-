@@ -27,8 +27,6 @@ export const login = async (user) => {
       type: LOGIN,
       payload: res.data,
     });
-  
-    console.log("soy res en user", res);
     return res;
   } catch (error) {
     console.error(error);
