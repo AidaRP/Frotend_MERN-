@@ -20,12 +20,15 @@ export const register = async (dataUser) => {
 };
 
 export const login = async (user) => {
+  
   try {
     const res = await axios.post(API_URL + "/users/login", user);
     store.dispatch({
       type: LOGIN,
       payload: res.data,
     });
+  
+    console.log("soy res en user", res);
     return res;
   } catch (error) {
     console.error(error);

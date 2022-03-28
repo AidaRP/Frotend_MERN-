@@ -10,16 +10,14 @@ const Login = () => {
     const onFinish = async (values) => {
         const res = await login(values);
         console.log(res)
-        if(res.data.includes('email' && 'contraseña')){
+        if(!res.data.includes('email' && 'contraseña')){
         notification.success({ message: "Bienvenida, bienvenido y/o bienvenide, !!!WELCOME TO THE PARTY🥳!!!",description: res.data });
         }
-        else{
+        if(res.data.includes('email' || 'contraseña')){
             notification.error({ message: "Error email o contraseña inválidos",description: res.data });
         }
     };
-    
 
-    
       return (
         <div className="skinLogin designLogin">
             <Form
