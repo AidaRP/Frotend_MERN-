@@ -1,6 +1,7 @@
 import { Form, Input, Button, Checkbox } from 'antd';
 import "antd/dist/antd.css";
 import { login } from '../../redux/actions/user';
+import "./Login.css";
 
 const Login = () => {
       
@@ -9,7 +10,7 @@ const Login = () => {
       };
     
       return (
-        <div className="skinLogin">
+        <div className="skinLogin designLogin">
             <Form
             name="basic"
             labelCol={{
