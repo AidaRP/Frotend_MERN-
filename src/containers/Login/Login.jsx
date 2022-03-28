@@ -1,20 +1,31 @@
 import { Form, Input, Button, Checkbox } from 'antd';
 import "antd/dist/antd.css";
+import React, { useState, useEffect } from "react";
 import { login } from '../../redux/actions/user';
+import { notification } from "antd";
 import "./Login.css";
 
 const Login = () => {
       
-    const onFinish = (values) => {
-        login(values)
-      };
+    const onFinish = async (values) => {
+        const res = await login(values);
+        console.log(res)
+        if(res.data.includes('email' && 'contraseña')){
+        notification.success({ message: "Bienvenida, bienvenido y/o bienvenide, !!!WELCOME TO THE PARTY🥳!!!",description: res.data });
+        }
+        else{
+            notification.error({ message: "Error email o contraseña inválidos",description: res.data });
+        }
+    };
+    
+
     
       return (
         <div className="skinLogin designLogin">
             <Form
             name="basic"
             labelCol={{
-                span: 8,
+                span: 10,
             }}
             wrapperCol={{
                 span: 16,
@@ -26,12 +37,12 @@ const Login = () => {
             autoComplete="off"
             >
             <Form.Item
-                label="Nickname or Email"
-                name="Nickname or Email"
+                label="Email"
+                name="Email"
                 rules={[
                 {
                     required: true,
-                    message: 'Please input your nickname or your email!',
+                    message: 'Please input your email!',
                 },
                 ]}
             >
@@ -69,13 +80,14 @@ const Login = () => {
                 }}
             >
                 <Button type="primary" htmlType="submit">
-                Submit
+                LOGIN
                 </Button>
             </Form.Item>
             </Form>
         </div>
       );
-    };
+    
+};
+
 
 export default Login;
-
