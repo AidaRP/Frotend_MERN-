@@ -1,0 +1,45 @@
+.designHeader{
+    height: 20vh;
+    width: 100vw;
+
+    background-color: rgb(176, 92, 255);
+
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    
+}
+.headerSpace {
+    width: 25vw;
+    height: 20vh;
+   
+}
+.linksDesign {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: flex-end;
+    
+  
+}
+.link{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+
+    margin-right: 1em;
+    margin-bottom: 1em;
+    color: whitesmoke;
+    font-size: 1.2em;
+    margin-left: 1em;
+
+    border-style: solid;
+    border-width: 0.1em;
+    border-radius: 0.2em;
+    background-color: rgb(253, 113, 57);
+}
+.link:hover {
+    font-weight: bold;
+    cursor: pointer;
+}
