@@ -1,15 +1,20 @@
-import React from 'react';
-import {useNavigate} from 'react-router-dom';
-import axios from 'axios';
+import React, {useState} from 'react';
+
+
 import './Header.css';
 
 const Header = () => {
+
+  
         return (
             <div className='designHeader'>
-             Soy Header hijos de puta
+              Soy Header
             </div>
         )
-   
-    }
+}
+
+    
+
+
 
 export default Header;
