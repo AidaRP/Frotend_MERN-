@@ -1,0 +1,43 @@
+.designProfile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1em;
+    padding: 2em;
+  }
+  .profileRight {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-around;
+  }
+  .updateBoton {
+    height: 2em;
+    width: 8em;
+  
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    background-color: lightsteelblue;
+    color: hsl(0, 0%, 30%);
+  
+    border-radius: 0.2em;
+    cursor: pointer;
+  }
+  .buttonFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5em;
+  }
+  
+  .updateBoton:hover {
+    color: lightsteelblue;
+    background-color: hsl(0, 0%, 30%);
+    border-radius: 0.2em;
+  }
+  body {
+    background-color: beige;
+  }
