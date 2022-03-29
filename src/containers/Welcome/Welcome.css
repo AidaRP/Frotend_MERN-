@@ -1,0 +1,12 @@
+.designWelcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    background-image: url('../../img/welcome.jpg');
+    
+    
+    height: 74vh;
+    width: 100vw;
+}
