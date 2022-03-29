@@ -1,0 +1,12 @@
+.designHeader{
+    height: 20vh;
+    width: 100vw;
+
+    background-color: aquamarine;
+
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    
+}
