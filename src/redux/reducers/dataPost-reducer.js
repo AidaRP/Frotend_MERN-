@@ -2,7 +2,8 @@ import { GET_POSTS ,POST_DETAIL,DELETE_POST, MODIFY_POST, RESET } from "../types
 
 const initialState = {
   post: null,
-  posts:[],
+  posts: [],
+  message: "",
 };
 
 const dataPostReducer = (state = initialState, action) => {
