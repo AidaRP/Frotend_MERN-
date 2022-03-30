@@ -5,6 +5,7 @@ import { updateUser, getUserInfo } from "../../redux/actions/user";
 import { Modal, Button, Input } from "antd";
 import "./Profile.css";
 
+
 const Profile = (props) => {
     let navigate = useNavigate();
     //Hooks
@@ -16,7 +17,7 @@ const Profile = (props) => {
         followers: props.user.followers,
         following: props.user.following,
     });
-
+const [visible, setVisible] = useState(false); 
     const fillData = (e) => {
         setDataUser({ ...dataUser, [e.target.name]: e.target.value });
     };
@@ -64,11 +65,39 @@ const Profile = (props) => {
                     <b>Following: </b>
                     {props.user.following}
                 </p>
+                <Button type="primary" onClick={() => setVisible(true)}>
+                    Edit Profile
+                </Button>
+                <Modal
+                    title="Edit Profile"
+                    visible={visible}
+                    onOk={() => onSubmit()}
+                    onCancel={() => setVisible(false)}
+                >
+                    <p><b>Nickname:</b></p>
+                    <Input
+                        name="nickname"
+                        value={dataUser.nickname}
+                        onChange={fillData}
+                    />
+                    <p><b>City:</b></p>
+                    <Input
+                        name="city"
+                        value={dataUser.city}
+                        onChange={fillData}
+                    />
+                    <p><b>Image:</b></p>
+                    <Input
+                        name="image_path"
+                        value={dataUser.image_path}
+                        onChange={fillData}
+                    />
+                </Modal>
             </div>
         </div>
     );
 }
-
+                
 const mapStateToProps = (state) => ({
   user: state.credentials.user,
   token: state.credentials.token,
