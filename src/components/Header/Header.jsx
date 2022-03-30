@@ -14,7 +14,7 @@ const Header = (props) => {
 
         setTimeout(()=> {
             navigate(lugar);
-        }, 200);
+        }, 2000);
     }
 
     const logOut = () => { 

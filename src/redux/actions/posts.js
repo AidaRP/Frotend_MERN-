@@ -5,7 +5,7 @@ const API_URL = process.env.NODE_ENV === 'production' ? 'https://backend-films20
 
 export const getPosts = async () => {
     try {
-      const res = await axios.get(API_URL + "/posts");
+      const res = await axios.get(API_URL + "/posts/getAll");
       store.dispatch({
         type: GET_POSTS,
         payload: res.data,
@@ -34,7 +34,7 @@ export const deletePostById = async (id) => {
       let config = {
           headers: { Authorization: credentials.token },
       };
-    const res = await axios.delete(API_URL + `/posts/${_id}`, config);
+    const res = await axios.delete(API_URL + `/posts/${id}`, config);
     store.dispatch({ type: DELETE_POST, payload: res.data })
       return res
   } catch (error) {

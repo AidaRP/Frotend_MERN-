@@ -5,4 +5,7 @@ export const RESET = 'reset';
 export const USER_INFO = 'user_info';
 export const GET_USERS = 'get_users';
 export const DELETE_USER = 'delete_user';
-
+export const GET_POSTS = 'get_posts';   
+export const POST_DETAIL = 'post_detail';
+export const DELETE_POST = 'delete_post';
+export const MODIFY_POST = 'modify_post';

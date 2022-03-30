@@ -1,10 +1,11 @@
-.designHome {
+.Home {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
    
+    background-color: rgb(116, 246, 9);
 
-    height: 74vh;
-    width: 100vw;
+    height: 70vh;
+    width: 100%;
 }

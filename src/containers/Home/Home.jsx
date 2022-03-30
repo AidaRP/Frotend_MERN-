@@ -1,17 +1,51 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { connect } from "react-redux";
+import { getPosts } from "../../redux/actions/posts";
+
 import "./Home.css";
 
-const Home = () => {
-  
-  let navigate = useNavigate();
-  //Primero comprobamos en el hook si tenemos el token (estamos logeados)
-  
-    return (
-      <div className="designHome">
-        Soy Home
-      </div>
-    );
-};
+const Home = (props) => {
+    //Hooks
+    const [dataPost, setDataPost] = useState({
+        creatorId: props.posts.creatorId,
+        commentsId: props.posts.commentId,
+        title: props.posts.title,
+        message: props.posts.message,
+        likes: props.posts.likes
+    });
 
-export default Home;
+    useEffect(() => {
+      
+        getPosts();
+        console.log('Soy la Juani');
+    }, []);
+    
+    return (
+        <div className="container">
+            <div className="card">
+             
+                <p>
+                    Title:`${props.posts.title}`
+                </p>
+                <p>
+                    Message:`${props.posts.message}`
+                </p>
+                <p>
+                    Comments:`${props.posts.comments}`
+                </p>
+                <p>
+                    Likes:`${props.posts.likes}`
+                </p>
+                
+            </div>
+        </div>
+    );
+  };
+const mapStateToProps = (state) => ({
+  user: state.credentials.user,
+  token: state.credentials.token,
+  message: state.credentials.message,
+  posts: state.posts.posts
+});
+export default connect(mapStateToProps)(Home);
+  
