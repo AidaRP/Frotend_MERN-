@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
 import "./Welcome.css";
 
 const Welcome = () => {
@@ -8,7 +9,9 @@ const Welcome = () => {
   
     return (
       <div className="designWelcome">
-        Hello Welcome
+          <div className="link" onClick={()=>navigate("/login")}>Login</div>
+          <div className="link" onClick={()=>navigate("/register")}>Register</div>
+          <div className="link" onClick={()=>navigate("/home")}>Home</div>  
       </div>
     );
 };

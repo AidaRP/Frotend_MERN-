@@ -2,7 +2,12 @@
     height: 20vh;
     width: 100vw;
 
-    background-color: aquamarine;
+    background-image: url('../../img/title.jpg');
+    background-size: 30em;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    background-color: white;
 
     display: flex;
     align-items: center;
