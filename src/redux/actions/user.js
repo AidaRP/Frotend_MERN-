@@ -42,7 +42,7 @@ export const updateUser = async (_id, dataUser) => {
       headers: { Authorization: credentials.token },
     };
     let res = await axios.put(` ${API_URL}/users/${_id}`, dataUser, config);
-    await store.dispatch({ type: MODIFY_CREDENTIALS, payload: res.data });
+    store.dispatch({ type: MODIFY_CREDENTIALS, payload: res.data });
 
     return res;
   } catch (error) {
@@ -59,7 +59,7 @@ export const getUserInfo = async () => {
       headers: { Authorization: credentials.token },
     };
     let res = await axios.get(`${API_URL}/users/_id`, config);
-    await store.dispatch({ type: USER_INFO, payload: res.data });
+    store.dispatch({ type: USER_INFO, payload: res.data });
 
     return res;
   } catch (error) {
