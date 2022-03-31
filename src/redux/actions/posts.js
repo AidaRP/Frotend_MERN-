@@ -1,8 +1,7 @@
 import store from "../store";
 import axios from "axios";
 import { GET_POSTS ,POST_DETAIL,DELETE_POST, MODIFY_POST } from "../types";
-const API_URL = process.env.NODE_ENV === 'production' ? 'https://backend-films2022.herokuapp.com': "http://localhost:5500";
-
+import { API_URL } from "../../utility";
 export const getPosts = async () => {
     try {
       const res = await axios.get(API_URL + "/posts/getAll");
@@ -10,6 +9,7 @@ export const getPosts = async () => {
         type: GET_POSTS,
         payload: res.data,
       });
+     
     } catch (error) {
       console.error(error);
     }

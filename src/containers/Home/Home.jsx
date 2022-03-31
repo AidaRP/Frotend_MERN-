@@ -17,26 +17,29 @@ const Home = (props) => {
     useEffect(() => {
       
         getPosts();
-        console.log('Soy la Juani');
+        
+        setDataPost(props.posts);
+
+        console.log(props.posts);
     }, []);
-    
     return (
         <div className="container">
             <div className="card">
-             
-                <p>
-                    Title:`${props.posts.title}`
-                </p>
-                <p>
-                    Message:`${props.posts.message}`
-                </p>
-                <p>
-                    Comments:`${props.posts.comments}`
-                </p>
-                <p>
-                    Likes:`${props.posts.likes}`
-                </p>
-                
+             {props.posts.map((post,index)=>(
+                 <div className="father">
+                     <div className="row1">
+                        <div className="title" key={index}>Title: {post.title}</div>
+                        <div className="message" key={index}>Message:{post.message}</div>
+                    </div>
+                    <div className="row2">
+                        <div className="comments"key={index}>Comments:{post.comments}</div>
+                        <div className="likes"key={index}>Likes:{post.likes}</div>
+                    </div>
+                 </div>
+
+             )
+             )}
+        
             </div>
         </div>
     );
