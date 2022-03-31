@@ -24,9 +24,9 @@ const Profile = (props) => {
         setDataUser({ ...dataUser, [e.target.name]: e.target.value });
     };
 
-    useEffect(() => {
-        getUserInfo();
-    }, []);
+    // useEffect(() => {
+    //     getUserInfo();
+    // }, []);
 
     useEffect(() => {
         if (props.user.token === "") {
@@ -36,10 +36,7 @@ const Profile = (props) => {
     const onSubmit = async () => {
         try {
             const res = await updateUser(props.user._id, dataUser);
-            console.log(res,'entro1')
             if (res) {
-                
-                console.log(res, 'entro2')
                 getUserInfo();
             };
             

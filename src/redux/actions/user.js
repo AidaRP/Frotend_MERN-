@@ -41,9 +41,10 @@ export const updateUser = async (_id, dataUser) => {
     let config = {
       headers: { Authorization: credentials.token },
     };
-    let res = await axios.put(`${API_URL}/users/edit/${_id}`, dataUser, config);
-    await store.dispatch({ type: MODIFY_CREDENTIALS, payload: res.data });
-
+    let res = await axios.put(`${API_URL}/users/edit`, dataUser, config);
+    if (!res.data == 'Este nickname ya existe') {
+      await store.dispatch({ type: MODIFY_CREDENTIALS, payload: res.data });
+    }
     return res;
   } catch (error) {
     console.log(error);
@@ -58,7 +59,7 @@ export const getUserInfo = async () => {
     let config = {
       headers: { Authorization: credentials.token },
     };
-    let res = await axios.get(`${API_URL}/users/_id`, config);
+    let res = await axios.get(`${API_URL}/users/info`, config);
     await store.dispatch({ type: USER_INFO, payload: res.data });
 
     return res;
