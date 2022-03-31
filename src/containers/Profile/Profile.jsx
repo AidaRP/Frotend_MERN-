@@ -17,7 +17,9 @@ const Profile = (props) => {
         followers: props.user.followers,
         following: props.user.following,
     });
-const [visible, setVisible] = useState(false); 
+    
+    
+
     const fillData = (e) => {
         setDataUser({ ...dataUser, [e.target.name]: e.target.value });
     };
@@ -34,36 +36,42 @@ const [visible, setVisible] = useState(false);
     const onSubmit = async () => {
         try {
             const res = await updateUser(props.user._id, dataUser);
+            console.log(res,'entro1')
             if (res) {
+                
+                console.log(res, 'entro2')
                 getUserInfo();
-            }
+            };
+            
         } catch (error) {
             console.log(error);
         }
     };
+    const [visible, setVisible] = useState(false);
+
     return (
         <div className="container">
             <div className="card">
                 <h1>{props.user.image_path}</h1>
                 <p>
                     <b>Nickname: </b>
-                    {props.user.nickname}
+                    {dataUser.nickname}
                 </p>
                 <p>
                     <b>City: </b>
-                    {props.user.city}
+                    {dataUser.city}
                 </p>
                 <p>
                     <b>Email: </b>
-                    {props.user.email}
+                    {dataUser.email}
                 </p>
                 <p>
                     <b>Followers: </b>
-                    {props.user.followers}
+                    {dataUser.followers}
                 </p>
                 <p>
                     <b>Following: </b>
-                    {props.user.following}
+                    {dataUser.following}
                 </p>
                 <Button type="primary" onClick={() => setVisible(true)}>
                     Edit Profile
@@ -77,21 +85,39 @@ const [visible, setVisible] = useState(false);
                     <p><b>Nickname:</b></p>
                     <Input
                         name="nickname"
-                        value={dataUser.nickname}
-                        onChange={fillData}
+                        type="text"
+                        variant="filled"
+                        autoComplete="off"
+                        value={dataUser.nickname || ""}
+                        onChange={(e) => {
+                            fillData(e);
+                          }}
                     />
                     <p><b>City:</b></p>
                     <Input
                         name="city"
-                        value={dataUser.city}
-                        onChange={fillData}
+                        type="text"
+                        variant="filled"
+                        autoComplete="off"
+                        value={dataUser.city || ""}
+                        onChange={(e) => {
+                            fillData(e);
+                          }}
                     />
                     <p><b>Image:</b></p>
                     <Input
                         name="image_path"
-                        value={dataUser.image_path}
-                        onChange={fillData}
+                        type="url"
+                        variant="filled"
+                        autoComplete="off"
+                        value={dataUser.image_path || ""}
+                        onChange={(e) => {
+                            fillData(e);
+                          }}
                     />
+                    <Button type="primary" onClick={() => onSubmit()}>
+                    Update
+                </Button>
                 </Modal>
             </div>
         </div>

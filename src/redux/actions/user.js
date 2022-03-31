@@ -41,7 +41,7 @@ export const updateUser = async (_id, dataUser) => {
     let config = {
       headers: { Authorization: credentials.token },
     };
-    let res = await axios.put(` ${API_URL}/users/${_id}`, dataUser, config);
+    let res = await axios.put(`${API_URL}/users/edit/${_id}`, dataUser, config);
     await store.dispatch({ type: MODIFY_CREDENTIALS, payload: res.data });
 
     return res;
