@@ -1,33 +1,17 @@
-.designHeader{
-    height: 20vh;
-    width: 100vw;
-
-    background-image: url('../../img/title.jpg');
-    background-size: 30em;
-    background-repeat: no-repeat;
-    background-position: center;
-
-    background-color: white;
-
+.designWelcome {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    flex-direction: row;
     justify-content: center;
     
-}
-.headerSpace {
-    width: 25vw;
-    height: 20vh;
-   
-}
-.linksDesign {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: flex-end;
+    background-image: url('../../img/welcome.jpg');
+    background-size: cover;
     
-  
+    
+    height: 70vh;
+    width: 100vw;
 }
+
 .link{
     display: flex;
     justify-content: flex-end;

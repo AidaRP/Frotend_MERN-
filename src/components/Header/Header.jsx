@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import { LOGOUT } from "../../redux/types";
 import {useNavigate} from 'react-router-dom';
 import {connect} from 'react-redux';
@@ -10,11 +10,16 @@ const Header = (props) => {
 
     let navigate = useNavigate();
 
+    useEffect(() => {
+      
+        console.log(props.token);
+    }, []);
+
     const surf = (lugar) => {
 
         setTimeout(()=> {
             navigate(lugar);
-        }, 200);
+        }, 2000);
     }
 
     const logOut = () => { 
