@@ -59,13 +59,8 @@ export const getUserInfo = async () => {
     let config = {
       headers: { Authorization: credentials.token },
     };
-<<<<<<< HEAD
-    let res = await axios.get(`${API_URL}/users/_id`, config);
-    store.dispatch({ type: USER_INFO, payload: res.data });
-=======
     let res = await axios.get(`${API_URL}/users/info`, config);
     await store.dispatch({ type: USER_INFO, payload: res.data });
->>>>>>> feature/profile
 
     return res;
   } catch (error) {
