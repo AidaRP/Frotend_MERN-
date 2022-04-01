@@ -37,7 +37,7 @@ const Profile = (props) => {
   });
   const onSubmit = async () => {
     try {
-      const res = await updateUser(props.user._id, dataUser);
+      const res = await updateUser(props.user?._id, dataUser);
       if (res) {
         getUserInfo();
           setVisible(false);
@@ -51,7 +51,7 @@ const Profile = (props) => {
   return (
     <div className="container">
       <div className="card" data-aos="zoom-in-down">
-        <h1>{props.user.image_path}</h1>
+        <h1>{props.user?.image_path}</h1>
         <p>
           <b>Nickname: </b>
           {dataUser.nickname}
