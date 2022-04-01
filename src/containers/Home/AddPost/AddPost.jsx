@@ -45,7 +45,7 @@ const AddPost = () => {
           rules={[
             {
               required: true,
-              message: "Please input your message!",
+              message: "Please input your description!",
             },
           ]}
         >
