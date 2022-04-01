@@ -16,6 +16,7 @@
   border-radius: 0.2em;
   background-color: rgba(67, 253, 57, 0.33);
   height: 2.5em;
+  min-width: 5em;
 }
 .link:hover {
   font-weight: bold;
@@ -26,7 +27,8 @@
   border-width: 0.1em;
   border-radius: 0.2em;
   border: none;
-  height: 4em;
+  height: 2.5em;
+  width: 5em;
   background-color: rgba(67, 253, 57, 0.33);
 }
 .welcome-title{
