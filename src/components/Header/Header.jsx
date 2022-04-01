@@ -8,24 +8,14 @@ import { Button } from 'antd';
 import './Header.css';
 
 const Header = (props) => {
-
     let navigate = useNavigate();
 
-    useEffect(() => {
-      
-        console.log(props.token);
-    }, []);
-
     const surf = (lugar) => {
-
-        setTimeout(()=> {
             navigate(lugar);
-        }, 2000);
     }
 
     const logOut = () => { 
          props.dispatch({type:LOGOUT});
-        
          setTimeout(()=>{
              navigate("/");
          },1000);
