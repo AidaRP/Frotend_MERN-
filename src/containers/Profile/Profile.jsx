@@ -12,12 +12,12 @@ const Profile = (props) => {
   let navigate = useNavigate();
   //Hooks
   const [dataUser, setDataUser] = useState({
-    nickname: props.user.nickname,
-    image_path: props.user.image_path,
-    city: props.user.city,
-    email: props.user.email,
-    followers: props.user.followers,
-    following: props.user.following,
+    nickname: props.user?.nickname,
+    image_path: props.user?.image_path,
+    city: props.user?.city,
+    email: props.user?.email,
+    followers: props.user?.followers,
+    following: props.user?.following,
   });
 
   const [visible, setVisible] = useState(false);
