@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { getPosts } from "../../redux/actions/posts";
+import { createPost, getPosts } from "../../redux/actions/posts";
 import {useNavigate} from 'react-router-dom';
+import { Form, Input, Button, Radio, notification } from 'antd';
 
 
 import "./Home.css";
@@ -32,9 +33,60 @@ const Home = (props) => {
 
         console.log(props.posts);
     }, []);
+
+    const onFinish = async (values) => {
+        const res = await createPost(values);
+        if(!res.data.includes('title' && 'message')){
+        notification.success({ message: "Tu post ha sido creado",description: res.data });
+        }
+        if(res.data.includes('title' || 'message')){
+            notification.error({ message: "Error title o message inválidos",description: res.data });
+        }
+    }
+   
+    
     return (
         <div className="Home">
-           
+{/*             
+           <Form
+            name="basic"
+            initialValues={{
+              remember: true,
+            }}
+            onFinish={onFinish}
+          >
+            <Form.Item
+              label="Title"
+              name="title"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your title!',
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item
+              label="Message"
+              name="message"
+              rules={[
+                {
+                  required: true,
+                  message: 'Please input your message!',
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item>
+              <Button type="primary" htmlType="submit">
+                Submit
+              </Button>
+            </Form.Item>
+            </Form>
+             */}
              {props.posts.map((post,index)=>(
                  <div className="father" onClick={()=>surf("/postDetail")}>
                      <div className="row1">
@@ -48,12 +100,13 @@ const Home = (props) => {
                  </div>
 
              )
-             )}
-        
+             )}    
             
         </div>
     );
   };
+
+
 const mapStateToProps = (state) => ({
   user: state.credentials.user,
   token: state.credentials.token,
@@ -61,4 +114,3 @@ const mapStateToProps = (state) => ({
   posts: state.posts.posts
 });
 export default connect(mapStateToProps)(Home);
-  
