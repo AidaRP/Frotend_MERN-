@@ -8,7 +8,7 @@ const Footer = () => {
   
         return (
             <div className='designFooter'>
-              C.R.A SL THE FUCKING ALL RIGHTS ARE RESERVED!⚖
+              C.R.A SL  ALL RIGHTS ARE RESERVED!⚖
             </div>
         )
 }
