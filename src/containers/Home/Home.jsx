@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getPosts } from "../../redux/actions/posts";
 
+
 import "./Home.css";
 
 const Home = (props) => {
@@ -23,8 +24,8 @@ const Home = (props) => {
         console.log(props.posts);
     }, []);
     return (
-        <div className="container">
-            <div className="card">
+        <div className="Home">
+           
              {props.posts.map((post,index)=>(
                  <div className="father">
                      <div className="row1">
@@ -40,7 +41,7 @@ const Home = (props) => {
              )
              )}
         
-            </div>
+            
         </div>
     );
   };

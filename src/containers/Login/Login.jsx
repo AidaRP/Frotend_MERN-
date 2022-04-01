@@ -3,15 +3,28 @@ import "antd/dist/antd.css";
 import React, { useState, useEffect } from "react";
 import { login } from '../../redux/actions/user';
 import { notification } from "antd";
+import {connect} from 'react-redux';
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 
-const Login = () => {
+
+
+const Login = (props) => {
       
+  let navigate = useNavigate();
+
+  const surf= (lugar) => {
+    if(!props.token){
+    setTimeout(()=> {
+        navigate(lugar);
+    }, 2000);
+    }
+}
     const onFinish = async (values) => {
         const res = await login(values);
         if(!res.data.includes('email' && 'contraseña')){
         notification.success({ message: "Bienvenida, bienvenido y/o bienvenide, !!!WELCOME TO THE PARTY🥳!!!",description: res.data });
-        }
+    }
         if(res.data.includes('email' || 'contraseña')){
             notification.error({ message: "Error email o contraseña inválidos",description: res.data });
         }
@@ -76,7 +89,7 @@ const Login = () => {
                 span: 16,
                 }}
             >
-                <Button type="primary" htmlType="submit">
+                <Button type="primary" htmlType="submit"onClick={()=>surf("/home")}>
                 LOGIN
                 </Button>
             </Form.Item>
@@ -87,4 +100,5 @@ const Login = () => {
 };
 
 
-export default Login;
+const mapStateToProps = (state) => ({ user: state.credentials.user, token: state.credentials.token });
+export default connect(mapStateToProps)(Login);

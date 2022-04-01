@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from 'antd';
 
 import "./Welcome.css";
 
@@ -9,9 +10,9 @@ const Welcome = () => {
   
     return (
       <div className="designWelcome">
-          <div className="link" onClick={()=>navigate("/login")}>Login</div>
-          <div className="link" onClick={()=>navigate("/register")}>Register</div>
-          <div className="link" onClick={()=>navigate("/home")}>Home</div>  
+          <Button type="primary"  onClick={()=>navigate("/login")}>Login</Button>  
+          <Button type="primary"  onClick={()=>navigate("/register")}>Register</Button>  
+          <Button type="primary"  onClick={()=>navigate("/home")}>Home</Button>    
       </div>
     );
 };

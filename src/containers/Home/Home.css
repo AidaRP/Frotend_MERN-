@@ -4,35 +4,23 @@
     align-items: center;
     justify-content: center;
    
-    background-color: rgb(116, 246, 9);
+    background-color: rgb(92, 175, 24);
 
-    height: 70vh;
+    height: 70em;
     width: 100vw;
-}
-.card {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    overflow-y: scroll;
-
-    height: 70vh;
-    width: 100vw;
-
-    background-color: rgb(116, 246, 9);
 }
 
 .father{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: center;
+    
    
-    background-color: rgb(116, 246, 9);
+    background-color: rgb(177, 243, 123);
 
-    height: 74vh;
-    width: 100vw;
+    height: 60vh;
+    width: 90vw;
 
     border-color: black;
     border-style: solid;
@@ -44,10 +32,10 @@
     align-items: center;
     justify-content: space-around;
    
-    background-color: rgb(116, 246, 9);
+    background-color: rgb(177, 243, 123);
 
-    height: 6em;
-    width: 40em;
+    height: 10vh;
+    width: 40vw;
 
 }
 .row2 {
@@ -56,25 +44,25 @@
     align-items: center;
     justify-content: space-around;
    
-    background-color: rgb(116, 246, 9);
+    background-color: rgb(177, 243, 123);
 
-    height: 6em;
-    width: 40em;
+    height: 6vh;
+    width: 40vw;
 }
 .title {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 6em;
-    width: 15em;
+    height: 6vh;
+    width: 15vw;
 }
 .comments {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 6em;
-    width: 15em;
+    height: 6vh;
+    width: 15vw;
 }
 

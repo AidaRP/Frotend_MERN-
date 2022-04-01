@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import { LOGOUT } from "../../redux/types";
 import {useNavigate} from 'react-router-dom';
 import {connect} from 'react-redux';
+import { Button } from 'antd';
 
 
 import './Header.css';
@@ -38,8 +39,8 @@ const Header = (props) => {
                 </div>
                 <div className="headerSpace"></div>
                 <div className="headerSpace linksDesign">
-                    <div className="link" onClick={()=>surf("/login")}>Login</div>
-                    <div className="link" onClick={()=>surf("/register")}>Register</div>   
+                <Button type="primary"  onClick={()=>surf("/login")}>Login</Button>
+                <Button type="primary"  onClick={()=>surf("/register")}>Register</Button>  
                 </div>
             </div>
         )
