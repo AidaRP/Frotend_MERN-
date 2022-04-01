@@ -1,6 +1,11 @@
 import store from "../store";
 import axios from "axios";
-import { GET_POSTS, POST_DETAIL, DELETE_POST, MODIFY_POST } from "../types";
+import {
+  GET_POSTS,
+  POST_DETAIL,
+  DELETE_POST,
+  MODIFY_POST,
+} from "../types";
 import { API_URL } from "../../utility";
 
 export const getPosts = async () => {
@@ -55,6 +60,38 @@ export const createPost = async (dataPost) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export const like = async (_id) => {
+  const credentials = JSON.parse(
+    localStorage.getItem("redux_localstorage_simple_credentials")
+  );
+  let config = {
+    headers: { Authorization: credentials.token },
+  };
+  const res = await axios.post(API_URL + "/posts/addLike/" + _id, {}, config, {
+    headers: {
+      authorization: credentials?.token,
+    },
+  });
+  getPosts()
+  return res.data;
+};
+
+export const dislike = async (_id) => {
+  const credentials = JSON.parse(
+    localStorage.getItem("redux_localstorage_simple_credentials")
+  );
+  let config = {
+    headers: { Authorization: credentials.token },
+  };
+  const res = await axios.post(API_URL + "/posts/unlike/" + _id, {}, config, {
+    headers: {
+      authorization: credentials?.token,
+    },
+  });
+  getPosts()
+  return res.data;
 };
 
 //revisar ruta
