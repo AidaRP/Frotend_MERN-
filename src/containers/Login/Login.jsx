@@ -89,7 +89,7 @@ const Login = (props) => {
                 span: 16,
                 }}
             >
-                <Button type="primary" htmlType="submit"onClick={()=>surf("/home")}>
+                <Button type="dashed" htmlType="submit"onClick={()=>surf("/home")}>
                 LOGIN
                 </Button>
             </Form.Item>

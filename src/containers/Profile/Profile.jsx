@@ -31,7 +31,7 @@ const Profile = (props) => {
   }, []);
 
   useEffect(() => {
-    if (props.user.token === "") {
+    if (props.user?.token === "") {
       navigate("/");
     }
   });
