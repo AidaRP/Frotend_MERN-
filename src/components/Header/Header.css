@@ -32,21 +32,20 @@
     justify-content: space-evenly;
      
 }
-.link{
+.link-header{
     display: flex;
     justify-content: flex-end;
     align-items: flex-end;
 
     margin-right: 1em;
     margin-bottom: 1em;
-    color: whitesmoke;
+    color: rgb(189, 189, 189);
     font-size: 1.2em;
     margin-left: 1em;
 
     border-style: solid;
     border-width: 0.1em;
     border-radius: 0.2em;
-    background-color: rgb(253, 113, 57);
 }
 .link:hover {
     font-weight: bold;
