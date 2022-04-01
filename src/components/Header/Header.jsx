@@ -39,8 +39,8 @@ const Header = (props) => {
                 </div>
                 <div className="headerSpace"></div>
                 <div className="headerSpace linksDesign">
-                <Button type="primary"  onClick={()=>surf("/login")}>Login</Button>
-                <Button type="primary"  onClick={()=>surf("/register")}>Register</Button>  
+                <div type="primary"  className="link-header" onClick={()=>surf("/login")}>Login</div>
+                <div type="primary" className="link-header"  onClick={()=>surf("/register")}>Register</div>  
                 </div>
             </div>
         )
@@ -52,9 +52,9 @@ const Header = (props) => {
                 </div>
                 <div className="headerSpace"></div>
                 <div className="headerSpace linksDesign">
+                    <div className="link-header"onClick={()=>surf("/")}>Home</div>   
                     <div className="link-header" onClick={()=>surf("/profile")}>{props.user.nickname}</div>
                     <div className="link-header" onClick={()=>logOut()}>Logout</div>  
-                    <div className="link-header"onClick={()=>surf("/")}>Home</div>   
                 </div>
             </div>
         )
