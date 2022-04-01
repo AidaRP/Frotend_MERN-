@@ -48,7 +48,7 @@ const Profile = (props) => {
   return (
     <div className="container">
       <div className="card">
-        <h1>{props.user.image_path}</h1>
+        
         <p>
           <b>Nickname: </b>
           {dataUser.nickname}

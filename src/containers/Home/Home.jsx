@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import { getPosts } from "../../redux/actions/posts";
+import {useNavigate} from 'react-router-dom';
 
 
 import "./Home.css";
@@ -15,6 +16,14 @@ const Home = (props) => {
         likes: props.posts.likes
     });
 
+    let navigate = useNavigate();
+    const surf = (lugar) => {
+
+        setTimeout(()=> {
+            navigate(lugar);
+        }, 2000);
+    }
+
     useEffect(() => {
       
         getPosts();
@@ -27,7 +36,7 @@ const Home = (props) => {
         <div className="Home">
            
              {props.posts.map((post,index)=>(
-                 <div className="father">
+                 <div className="father" onClick={()=>surf("/postDetail")}>
                      <div className="row1">
                         <div className="title" key={index}>Title: {post.title}</div>
                         <div className="message" key={index}>Message:{post.message}</div>

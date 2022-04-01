@@ -20,7 +20,7 @@ const Header = (props) => {
 
         setTimeout(()=> {
             navigate(lugar);
-        }, 2000);
+        }, 1000);
     }
 
     const logOut = () => { 
@@ -52,9 +52,9 @@ const Header = (props) => {
                 </div>
                 <div className="headerSpace"></div>
                 <div className="headerSpace linksDesign">
-                    <div className="link" onClick={()=>surf("/profile")}>{props.user.nickname}</div>
-                    <div className="link" onClick={()=>logOut()}>Logout</div>  
-                    <div className="link"onClick={()=>surf("/")}>Home</div>   
+                     <Button type="primary"  onClick={()=>surf("/profile")}>{props.user.nickname}</Button>
+                     <Button type="primary"  onClick={()=>logOut()}>Logout</Button>
+                     <Button type="primary"  onClick={()=>surf("/home")}>Home</Button>     
                 </div>
             </div>
         )

@@ -51,9 +51,26 @@ export const createPost = async (dataPost) => {
   }
 };
 
-export const updatePost = async (dataPost) => {
+// export const updatePost = async (dataPost) => {
+//   try {
+//     let res = await axios.put(API_URL + "/posts/edit",dataPost);
+//     return res;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
+export const updatePost = async (_id, dataPost) => {
   try {
-    let res = await axios.put(API_URL + "/posts/edit",dataPost);
+    const credentials = JSON.parse(
+      localStorage.getItem("redux_localstorage_simple_credentials")
+    );
+    let config = {
+      headers: { Authorization: credentials.token },
+    };
+    let res = await axios.put(`${API_URL}/posts/edit`, dataPost, config);
+    
+      await store.dispatch({ type: MODIFY_POST, payload: res.data });
+    
     return res;
   } catch (error) {
     console.log(error);

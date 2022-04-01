@@ -7,6 +7,7 @@ import Welcome from './containers/Welcome/Welcome';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Profile from './containers/Profile/Profile';
+import PostDetail from "./containers/PostDetail/PostDetail";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/postDetail" element={<PostDetail />} />
         </Routes>
       <Footer/>
         </BrowserRouter>
