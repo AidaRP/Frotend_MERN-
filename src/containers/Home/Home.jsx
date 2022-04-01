@@ -1,9 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { getPosts, like, dislike } from "../../redux/actions/posts";
+import {
+  getPosts,
+  like,
+  dislike,
+  deletePostById,
+} from "../../redux/actions/posts";
 import AddPost from "./AddPost/AddPost";
 import "./Home.css";
-import { HeartOutlined, HeartFilled } from "@ant-design/icons";
+import { HeartOutlined, HeartFilled,DeleteOutlined  } from "@ant-design/icons";
 
 const Home = (props) => {
   useEffect(() => {
@@ -39,6 +44,7 @@ const Home = (props) => {
                         ? () => dislike(post._id)
                         : () => like(post._id)
                     }
+                    style={{ fontSize: '20px', color: '#08c', padding:'0.2em'}}
                   />
                 ) : (
                   <HeartOutlined
@@ -47,7 +53,14 @@ const Home = (props) => {
                         ? () => dislike(post._id)
                         : () => like(post._id)
                     }
+                    style={{ fontSize: '20px', color: '#08c', padding:'0.2em'}}
                   />
+                        )}
+                    
+                {props.user?._id == post.creatorId?._id ? (
+                 <DeleteOutlined style={{ fontSize: '20px', color: 'red', padding:'1em'}} onClick={() => deletePostById(post._id)} />
+                ) : (
+                  ""
                 )}
               </div>
             </div>

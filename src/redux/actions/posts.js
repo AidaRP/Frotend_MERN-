@@ -41,6 +41,7 @@ export const deletePostById = async (id) => {
     };
     const res = await axios.delete(API_URL + `/posts/deleteId/${id}`, config);
     store.dispatch({ type: DELETE_POST, payload: res.data });
+    getPosts();
     return res;
   } catch (error) {
     console.log(error);
