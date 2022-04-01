@@ -3,7 +3,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgb(92, 175, 24);
+  background-color: rgba(233, 233, 233, 0.855);
   width: 100vw;
 }
 
@@ -11,8 +11,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 1em;
-  background-color: rgb(177, 243, 123);
+  margin: 2em;
+  background-color: rgba(38, 163, 4, 0.338);
   height: 15vh;
   width: 50vw;
   max-width: 90vw;
@@ -22,24 +22,18 @@
   padding: 0.5em;
 }
 .row1 {
-  /* display: flex;
+  display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
-   
-    background-color: rgb(177, 243, 123);
-
     height: 10vh;
-    width: 40vw; */
+    width: 40vw;
 }
 .row2 {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
-
-  background-color: rgb(177, 243, 123);
-
   height: 6vh;
   width: 40vw;
 }

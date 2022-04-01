@@ -58,8 +58,8 @@ const AddPost = () => {
             span: 16,
           }}
         >
-          <Button type="primary" htmlType="submit">
-            Submit
+          <Button type="dashed" htmlType="submit">
+            Create post
           </Button>
         </Form.Item>
       </Form>

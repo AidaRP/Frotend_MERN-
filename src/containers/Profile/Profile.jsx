@@ -4,8 +4,11 @@ import { connect } from "react-redux";
 import { updateUser, getUserInfo } from "../../redux/actions/user";
 import { Modal, Button, Input, notification } from "antd";
 import "./Profile.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Profile = (props) => {
+  AOS.init();
   let navigate = useNavigate();
   //Hooks
   const [dataUser, setDataUser] = useState({
@@ -47,7 +50,7 @@ const Profile = (props) => {
 
   return (
     <div className="container">
-      <div className="card">
+      <div className="card" data-aos="zoom-in-down">
         <h1>{props.user.image_path}</h1>
         <p>
           <b>Nickname: </b>
@@ -69,7 +72,7 @@ const Profile = (props) => {
           <b>Following: </b>
           {dataUser.following}
         </p>
-        <Button type="primary" onClick={() => setVisible(true)}>
+        <Button type="dashed" onClick={() => setVisible(true)}>
           Edit Profile
         </Button>
         <Modal

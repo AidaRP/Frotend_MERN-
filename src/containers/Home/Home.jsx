@@ -9,8 +9,11 @@ import {
 import AddPost from "./AddPost/AddPost";
 import "./Home.css";
 import { HeartOutlined, HeartFilled,DeleteOutlined  } from "@ant-design/icons";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Home = (props) => {
+    AOS.init();
   useEffect(() => {
     getPosts();
   }, []);
@@ -22,7 +25,7 @@ const Home = (props) => {
         const isAlreadyLiked = post.likes?.includes(props.user?._id);
 
         return (
-          <div className="father">
+          <div className="father" data-aos="zoom-in-right">
             <div className="row1">
               <div className="title" key={index}>
                 Title: {post.title}
