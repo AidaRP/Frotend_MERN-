@@ -52,7 +52,7 @@
     border-radius: 0.2em;
   }
   body {
-    background-color: beige
+    background-color: white;
   }
   .card {
     display: flex;
