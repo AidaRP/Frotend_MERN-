@@ -6,6 +6,7 @@ import Home from './containers/Home/Home';
 import Welcome from './containers/Welcome/Welcome';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import Profile from './containers/Profile/Profile';
 
 function App() {
   return (
