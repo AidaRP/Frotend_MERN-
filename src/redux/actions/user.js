@@ -97,4 +97,17 @@ export const deleteUser = async (_id) => {
   } catch (error) {
     console.log(error);
   }
+
+  
 };
+
+export const getUsersByNickname = async (nickname) => {
+  try {
+    let res = await axios.get(`${API_URL}/users/nickname/${nickname}`,);
+    store.dispatch({ type: GET_USERS, payload: res.data });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+

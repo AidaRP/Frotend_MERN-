@@ -8,6 +8,7 @@ import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 import Profile from './containers/Profile/Profile';
 import PostDetail from "./containers/PostDetail/PostDetail";
+import Search from './components/Search/SearchUser';
 
 function App() {
   return (
@@ -21,6 +22,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/postDetail" element={<PostDetail />} />
+          <Route path="/search/:nickname" element={<Search />} />
+          
         </Routes>
       <Footer/>
         </BrowserRouter>

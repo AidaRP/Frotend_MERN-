@@ -6,6 +6,7 @@ import { Modal, Button, Input, notification } from "antd";
 import "./PostDetail.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { POST_DETAIL } from "../../redux/types";
 
 const PostDetail = (props) => {
   AOS.init();
@@ -24,7 +25,7 @@ const PostDetail = (props) => {
 
   useEffect(() => {
     getPostById();
-    console.log(props.posts);
+    console.log(props);
   }, []);
 
   useEffect(() => {

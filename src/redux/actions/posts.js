@@ -10,11 +10,13 @@ import { API_URL } from "../../utility";
 
 export const getPosts = async () => {
   try {
+    
     const res = await axios.get(API_URL + "/posts/getAll");
     store.dispatch({
       type: GET_POSTS,
       payload: res.data.reverse(),
     });
+    console.log(res.data)
   } catch (error) {
     console.error(error);
   }

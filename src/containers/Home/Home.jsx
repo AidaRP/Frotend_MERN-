@@ -12,6 +12,7 @@ import { HeartOutlined, HeartFilled,DeleteOutlined  } from "@ant-design/icons";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import {useNavigate} from 'react-router-dom';
+import {POST_DETAIL} from "../../redux/types";
 
 const Home = (props) => {
     AOS.init();
@@ -21,9 +22,13 @@ const Home = (props) => {
 
   let navigate = useNavigate();
 
-  const surf = (lugar) => {
-          navigate(lugar);
-  }
+  const surf = (post) => {
+
+      props.dispatch({ type: POST_DETAIL, payload: post});
+      console.log(props)
+      navigate("/postdetail");
+  }      
+  
 
   return (
     <div className="Home">
@@ -33,7 +38,7 @@ const Home = (props) => {
 
         return (
           <div className="father" data-aos="zoom-in-right" >
-            <div className="details" key={index} onClick={()=>surf("/postDetail")}>
+            <div className="details" key={index} onClick={()=>surf()}>
                 Details 
               </div>
             <div className="row1">
