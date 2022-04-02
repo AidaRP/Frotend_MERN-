@@ -14,9 +14,9 @@ Necesitaremos la instalación de un programa específico para visualizar nuestro
 
 El proyecto ha sido desarrollado utilizando as siguientes tecnologias y herramientas:
 
-
+<img src="img/js.jpg" width="90em"/><img src="img/react.png" width="90em"/><img src="img/redux.png" width="90em"/>
 </br>
-
+<img src="img/ant-design.jpg" width="90em"/><img src="img/aws.png" width="90em"/>
 </br>
 <img src="img/dotenv.png" width="90em"/><img src="img/jwt.png" width="90em"/><img src="img/github.png" width="90em"/><img src="img/postman.png" width="90em"/>
 </br>
