@@ -15,8 +15,8 @@ const User = (props) => {
             <p>{user.email}</p>
                 </div>
                 <div className="info-user">
-            <p>Followers: 10</p>
-            <p>Following: 21</p>
+            <p>Followers: {user.followers?.length}</p>
+            <p>Following: {user.following?.length}</p>
                 </div>
                 <button>Unfollow/Follow</button>
         </div>
