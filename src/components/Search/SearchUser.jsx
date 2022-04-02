@@ -7,7 +7,6 @@ import './SearchUser.css';
 const SearchUser = () => {
   const { nickname } = useParams();
   useEffect(() => {
-    console.log(nickname);
     getUsersByNickname(nickname);
   }, [nickname]);
   return (

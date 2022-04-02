@@ -9,7 +9,6 @@ import {
   DELETE_USER,
 } from "../types";
 
-
 export const register = async (dataUser) => {
   try {
     let res = await axios.post(API_URL + "/users/register", dataUser);
@@ -20,7 +19,6 @@ export const register = async (dataUser) => {
 };
 
 export const login = async (user) => {
-  
   try {
     const res = await axios.post(API_URL + "/users/login", user);
     store.dispatch({
@@ -42,7 +40,7 @@ export const updateUser = async (_id, dataUser) => {
       headers: { Authorization: credentials.token },
     };
     let res = await axios.put(`${API_URL}/users/edit`, dataUser, config);
-    if (!res.data == 'Este nickname ya existe') {
+    if (!res.data == "Este nickname ya existe") {
       await store.dispatch({ type: MODIFY_CREDENTIALS, payload: res.data });
     }
     return res;
@@ -97,17 +95,50 @@ export const deleteUser = async (_id) => {
   } catch (error) {
     console.log(error);
   }
-
-  
 };
 
 export const getUsersByNickname = async (nickname) => {
   try {
-    let res = await axios.get(`${API_URL}/users/nickname/${nickname}`,);
+    let res = await axios.get(`${API_URL}/users/nickname/${nickname}`);
     store.dispatch({ type: GET_USERS, payload: res.data });
   } catch (error) {
     console.log(error);
   }
 };
 
+export const follow = async (data) => {
+  const credentials = JSON.parse(
+    localStorage.getItem("redux_localstorage_simple_credentials")
+  );
+  let config = {
+    headers: { Authorization: credentials.token },
+  };
+  const res = await axios.put(API_URL + "/users/follow/"+data._id, {}, config, {
+    headers: {
+      authorization: credentials?.token,
+    },
+  });
+  getUsersByNickname(data?.nickname);
+  return res.data;
+};
 
+export const unfollow = async (data) => {
+  const credentials = JSON.parse(
+    localStorage.getItem("redux_localstorage_simple_credentials")
+  );
+  let config = {
+    headers: { Authorization: credentials.token },
+  };
+  const res = await axios.put(
+    API_URL + "/users/unfollow/"+data._id ,
+    { },
+    config,
+    {
+      headers: {
+        authorization: credentials?.token,
+      },
+    }
+  );
+  getUsersByNickname(data?.nickname);
+  return res.data;
+};

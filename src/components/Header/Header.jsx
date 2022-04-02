@@ -1,16 +1,16 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from "react";
 import { LOGOUT } from "../../redux/types";
-import {useNavigate} from 'react-router-dom';
-import {connect} from 'react-redux';
-import { Button, Input } from 'antd';
-import logo from '../../img/title.jpg'
+import { useNavigate } from "react-router-dom";
+import { connect } from "react-redux";
+import { Button, Input } from "antd";
+import logo from "../../img/title.jpg";
 
-import './Header.css';
+import "./Header.css";
 
 const Header = (props) => {
-    let navigate = useNavigate();
+  let navigate = useNavigate();
 
-    const [text, setText] = useState("");
+  const [text, setText] = useState("");
   const handleChange = (e) => {
     setText(e.target.value);
     if (e.key === "Enter") {
@@ -18,54 +18,67 @@ const Header = (props) => {
     }
   };
 
-    const surf = (lugar) => {
-            navigate(lugar);
-    }
+  const surf = (lugar) => {
+    navigate(lugar);
+  };
 
-    const logOut = () => { 
-         props.dispatch({type:LOGOUT});
-         setTimeout(()=>{
-             navigate("/");
-         },1000);
-    }
+  const logOut = () => {
+    props.dispatch({ type: LOGOUT });
+    setTimeout(() => {
+      navigate("/");
+    }, 1000);
+  };
 
-    if(!props.token){
-        return (
-            <div className='designHeader'>
-                
-                    <img src={logo} alt="" />
-                <Input
-       
-        onKeyUp={handleChange}
-        variant="default"
-        placeholder="Search User"
-      />
-                <div className="linksDesign">
-                <div type="primary"  className="link-header" onClick={()=>surf("/login")}>Login</div>
-                <div type="primary" className="link-header"  onClick={()=>surf("/register")}>Register</div>  
-                </div>
-            </div>
-        )
-    }else {
-        return (
-            <div className='designHeader'>
-                  <img src={logo} alt="" />
-                 
-                <Input
-       
-       onKeyUp={handleChange}
-       variant="default"
-       placeholder="Search User"
-     />
-                <div className="linksDesign">
-                    <div className="link-header"onClick={()=>surf("/home")}>Home</div>   
-                    <div className="link-header" onClick={()=>surf("/profile")}>{props.user?.nickname}</div>
-                    <div className="link-header" onClick={()=>logOut()}>Logout</div>  
-                </div>
-            </div>
-        )
-    }
-}
+  if (!props.token) {
+    return (
+      <div className="designHeader">
+        <img src={logo} alt="" />
+        <div className="input-container">
+          <Input onKeyUp={handleChange} placeholder="Search User" />
+        </div>
+        <div className="linksDesign">
+          <div
+            type="primary"
+            className="link-header"
+            onClick={() => surf("/login")}
+          >
+            Login
+          </div>
+          <div
+            type="primary"
+            className="link-header"
+            onClick={() => surf("/register")}
+          >
+            Register
+          </div>
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div className="designHeader">
+        <img src={logo} alt="" />
+        <div className="input-container">
+          <Input onKeyUp={handleChange} placeholder="Search User" />
+        </div>
+        <div className="linksDesign">
+          <div className="link-header" onClick={() => surf("/home")}>
+            Home
+          </div>
+          <div className="link-header" onClick={() => surf("/profile")}>
+            {props.user?.nickname}
+          </div>
+          <div className="link-header" onClick={() => logOut()}>
+            Logout
+          </div>
+        </div>
+      </div>
+    );
+  }
+};
 
-const mapStateToProps = (state) => ({ user: state.credentials.user, token: state.credentials.token });
+const mapStateToProps = (state) => ({
+  user: state.credentials.user,
+  token: state.credentials.token,
+});
 export default connect(mapStateToProps)(Header);

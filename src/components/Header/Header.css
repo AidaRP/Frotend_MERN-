@@ -7,9 +7,7 @@
 .designHeader  img{
   width: 10vw;
 }
-.ant-input:placeholder-shown {
-  width: 25vw;
-}
+
 .headerSpace {
   width: 25vw;
   height: 20vh;
@@ -43,4 +41,7 @@
 .link-header:hover {
   font-weight: bold;
   cursor: pointer;
+}
+.input-container{
+  width: 25vw;
 }
