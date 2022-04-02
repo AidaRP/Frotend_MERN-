@@ -6,11 +6,11 @@ import { notification } from "antd";
 import {connect} from 'react-redux';
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
-
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Login = (props) => {
-      
+    AOS.init();
   let navigate = useNavigate();
 
   const surf= (lugar) => {
@@ -32,7 +32,7 @@ const Login = (props) => {
 
       return (
         <div className="skinLogin designLogin">
-            <Form
+            <Form data-aos="flip-right"
             name="basic"
             labelCol={{
                 span: 10,
@@ -89,7 +89,7 @@ const Login = (props) => {
                 span: 16,
                 }}
             >
-                <Button type="primary" htmlType="submit"onClick={()=>surf("/home")}>
+                <Button type="dashed" htmlType="submit"onClick={()=>surf("/home")}>
                 LOGIN
                 </Button>
             </Form.Item>

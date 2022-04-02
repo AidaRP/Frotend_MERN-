@@ -3,8 +3,11 @@ import "antd/dist/antd.css";
 import { register } from "../../redux/actions/user";
 import { notification } from "antd";
 import "./Register.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Register = () => {
+  AOS.init();
   const onFinish = async (values) => {
     const res = await register(values);
     if(!res.data.includes('contraseña')){
@@ -17,7 +20,7 @@ const Register = () => {
 
   return (
     <div className="designRegister">
-      <Form
+      <Form data-aos="flip-right"
         name="basic"
         labelCol={{
           span: 8,

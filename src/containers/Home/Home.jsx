@@ -1,116 +1,82 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { createPost, getPosts } from "../../redux/actions/posts";
-import {useNavigate} from 'react-router-dom';
-import { Form, Input, Button, Radio, notification } from 'antd';
-
-
+import {
+  getPosts,
+  like,
+  dislike,
+  deletePostById,
+} from "../../redux/actions/posts";
+import AddPost from "./AddPost/AddPost";
 import "./Home.css";
+import { HeartOutlined, HeartFilled,DeleteOutlined  } from "@ant-design/icons";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Home = (props) => {
-    //Hooks
-    const [dataPost, setDataPost] = useState({
-        creatorId: props.posts.creatorId,
-        commentsId: props.posts.commentId,
-        title: props.posts.title,
-        message: props.posts.message,
-        likes: props.posts.likes
-    });
+    AOS.init();
+  useEffect(() => {
+    getPosts();
+  }, []);
 
-    let navigate = useNavigate();
-    const surf = (lugar) => {
+  return (
+    <div className="Home">
+      <AddPost />
+      {props.posts.map((post, index) => {
+        const isAlreadyLiked = post.likes?.includes(props.user?._id);
 
-        setTimeout(()=> {
-            navigate(lugar);
-        }, 2000);
-    }
-
-    useEffect(() => {
-      
-        getPosts();
-        
-        setDataPost(props.posts);
-
-        console.log(props.posts);
-    }, []);
-
-    const onFinish = async (values) => {
-        const res = await createPost(values);
-        if(!res.data.includes('title' && 'message')){
-        notification.success({ message: "Tu post ha sido creado",description: res.data });
-        }
-        if(res.data.includes('title' || 'message')){
-            notification.error({ message: "Error title o message inválidos",description: res.data });
-        }
-    }
-   
-    
-    return (
-        <div className="Home">
-{/*             
-           <Form
-            name="basic"
-            initialValues={{
-              remember: true,
-            }}
-            onFinish={onFinish}
-          >
-            <Form.Item
-              label="Title"
-              name="title"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input your title!',
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-
-            <Form.Item
-              label="Message"
-              name="message"
-              rules={[
-                {
-                  required: true,
-                  message: 'Please input your message!',
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item>
-              <Button type="primary" htmlType="submit">
-                Submit
-              </Button>
-            </Form.Item>
-            </Form>
-             */}
-             {props.posts.map((post,index)=>(
-                 <div className="father" onClick={()=>surf("/postDetail")}>
-                     <div className="row1">
-                        <div className="title" key={index}>Title: {post.title}</div>
-                        <div className="message" key={index}>Message:{post.message}</div>
-                    </div>
-                    <div className="row2">
-                        <div className="comments"key={index}>Comments:{post.comments}</div>
-                        <div className="likes"key={index}>Likes:{post.likes}</div>
-                    </div>
-                 </div>
-
-             )
-             )}    
-            
-        </div>
-    );
-  };
-
-
+        return (
+          <div className="father" data-aos="zoom-in-right">
+            <div className="row1">
+              <div className="title" key={index}>
+                Title: {post.title}
+              </div>
+              <div className="message" key={index}>
+                Description:{post.message}
+              </div>
+            </div>
+            <div className="row2">
+              <div className="comments" key={index}>
+                Comments:{post.comments}
+              </div>
+              <div className="likes" key={index}>
+                Likes:{post.likes?.length}
+                {isAlreadyLiked ? (
+                  <HeartFilled
+                    onClick={
+                      isAlreadyLiked
+                        ? () => dislike(post._id)
+                        : () => like(post._id)
+                    }
+                    style={{ fontSize: '20px', color: '#08c', padding:'0.2em'}}
+                  />
+                ) : (
+                  <HeartOutlined
+                    onClick={
+                      isAlreadyLiked
+                        ? () => dislike(post._id)
+                        : () => like(post._id)
+                    }
+                    style={{ fontSize: '20px', color: '#08c', padding:'0.2em'}}
+                  />
+                        )}
+                    
+                {props.user?._id == post.creatorId?._id ? (
+                 <DeleteOutlined style={{ fontSize: '20px', color: 'red', padding:'1em'}} onClick={() => deletePostById(post._id)} />
+                ) : (
+                  ""
+                )}
+              </div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 const mapStateToProps = (state) => ({
   user: state.credentials.user,
   token: state.credentials.token,
   message: state.credentials.message,
-  posts: state.posts.posts
+  posts: state.posts.posts,
 });
 export default connect(mapStateToProps)(Home);

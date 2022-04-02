@@ -1,54 +1,50 @@
-.designHeader{
-    height: 20vh;
-    width: 100vw;
+.designHeader {
+  height: 20vh;
+  width: 100vw;
 
-    background-image: url('../../img/title.jpg');
-    background-size: 30em;
-    background-repeat: no-repeat;
-    background-position: center;
+  background-image: url("../../img/title.jpg");
+  background-size: 30em;
+  background-repeat: no-repeat;
+  background-position: center;
 
-    background-color: white;
+  background-color: white;
 
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: center;
-    
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
 }
 .headerSpace {
-    width: 25vw;
-    height: 20vh;
+  width: 25vw;
+  height: 20vh;
 
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: center;
-   
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
 }
 .linksDesign {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-evenly;
-     
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-evenly;
 }
-.link{
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+.link-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 0.5em;
+  margin-right: 1em;
+  margin-bottom: 1em;
+  color: rgb(189, 189, 189);
+  font-size: 1.2em;
+  margin-left: 1em;
 
-    margin-right: 1em;
-    margin-bottom: 1em;
-    color: whitesmoke;
-    font-size: 1.2em;
-    margin-left: 1em;
-
-    border-style: solid;
-    border-width: 0.1em;
-    border-radius: 0.2em;
-    background-color: rgb(253, 113, 57);
+  border-style: solid;
+  border-width: 0.1em;
+  border-radius: 0.2em;
 }
-.link:hover {
-    font-weight: bold;
-    cursor: pointer;
+.link-header:hover {
+  font-weight: bold;
+  cursor: pointer;
 }

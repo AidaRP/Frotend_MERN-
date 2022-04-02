@@ -8,24 +8,18 @@ import { Button } from 'antd';
 import './Header.css';
 
 const Header = (props) => {
-
     let navigate = useNavigate();
 
-    useEffect(() => {
-      
-        console.log(props.token);
-    }, []);
-
     const surf = (lugar) => {
-
-        setTimeout(()=> {
             navigate(lugar);
+<<<<<<< HEAD
         }, 1000);
+=======
+>>>>>>> develop
     }
 
     const logOut = () => { 
          props.dispatch({type:LOGOUT});
-        
          setTimeout(()=>{
              navigate("/");
          },1000);
@@ -39,8 +33,8 @@ const Header = (props) => {
                 </div>
                 <div className="headerSpace"></div>
                 <div className="headerSpace linksDesign">
-                <Button type="primary"  onClick={()=>surf("/login")}>Login</Button>
-                <Button type="primary"  onClick={()=>surf("/register")}>Register</Button>  
+                <div type="primary"  className="link-header" onClick={()=>surf("/login")}>Login</div>
+                <div type="primary" className="link-header"  onClick={()=>surf("/register")}>Register</div>  
                 </div>
             </div>
         )
@@ -52,9 +46,15 @@ const Header = (props) => {
                 </div>
                 <div className="headerSpace"></div>
                 <div className="headerSpace linksDesign">
+<<<<<<< HEAD
                      <Button type="primary"  onClick={()=>surf("/profile")}>{props.user.nickname}</Button>
                      <Button type="primary"  onClick={()=>logOut()}>Logout</Button>
                      <Button type="primary"  onClick={()=>surf("/home")}>Home</Button>     
+=======
+                    <div className="link-header"onClick={()=>surf("/home")}>Home</div>   
+                    <div className="link-header" onClick={()=>surf("/profile")}>{props.user?.nickname}</div>
+                    <div className="link-header" onClick={()=>logOut()}>Logout</div>  
+>>>>>>> develop
                 </div>
             </div>
         )
