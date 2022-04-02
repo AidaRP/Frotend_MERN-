@@ -2,13 +2,21 @@ import React, {useEffect, useState} from 'react';
 import { LOGOUT } from "../../redux/types";
 import {useNavigate} from 'react-router-dom';
 import {connect} from 'react-redux';
-import { Button } from 'antd';
-
+import { Button, Input } from 'antd';
+import logo from '../../img/title.jpg'
 
 import './Header.css';
 
 const Header = (props) => {
     let navigate = useNavigate();
+
+    const [text, setText] = useState("");
+  const handleChange = (e) => {
+    setText(e.target.value);
+    if (e.key === "Enter") {
+      navigate("/search/" + text);
+    }
+  };
 
     const surf = (lugar) => {
             navigate(lugar);
@@ -24,11 +32,15 @@ const Header = (props) => {
     if(!props.token){
         return (
             <div className='designHeader'>
-                <div className="headerSpace genreDesign">
                 
-                </div>
-                <div className="headerSpace"></div>
-                <div className="headerSpace linksDesign">
+                    <img src={logo} alt="" />
+                <Input
+       
+        onKeyUp={handleChange}
+        variant="default"
+        placeholder="Search User"
+      />
+                <div className="linksDesign">
                 <div type="primary"  className="link-header" onClick={()=>surf("/login")}>Login</div>
                 <div type="primary" className="link-header"  onClick={()=>surf("/register")}>Register</div>  
                 </div>
@@ -37,11 +49,15 @@ const Header = (props) => {
     }else {
         return (
             <div className='designHeader'>
-                  <div className="headerSpace genreDesign">
-               
-                </div>
-                <div className="headerSpace"></div>
-                <div className="headerSpace linksDesign">
+                  <img src={logo} alt="" />
+                 
+                <Input
+       
+       onKeyUp={handleChange}
+       variant="default"
+       placeholder="Search User"
+     />
+                <div className="linksDesign">
                     <div className="link-header"onClick={()=>surf("/home")}>Home</div>   
                     <div className="link-header" onClick={()=>surf("/profile")}>{props.user?.nickname}</div>
                     <div className="link-header" onClick={()=>logOut()}>Logout</div>  
@@ -50,12 +66,6 @@ const Header = (props) => {
         )
     }
 }
-
-
-
-    
-
-
 
 const mapStateToProps = (state) => ({ user: state.credentials.user, token: state.credentials.token });
 export default connect(mapStateToProps)(Header);
