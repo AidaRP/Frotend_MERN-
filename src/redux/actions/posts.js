@@ -22,10 +22,11 @@ export const getPosts = async () => {
 export const getPostById = async (_id) => {
   try {
     const res = await axios.get(API_URL + `/posts/getPost/${_id}`);	
-    store.dispatch({
+    await store.dispatch({
       type: POST_DETAIL,
       payload: res.data,
     });
+    return res;
   } catch (error) {
     console.error(error);
   }

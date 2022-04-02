@@ -12,8 +12,8 @@ const PostDetail = (props) => {
   let navigate = useNavigate();
   //Hooks
   const [dataPost, setDataPost] = useState({
-    title: props.posts?.title,
-    message: props.posts?.message
+    title: props.post?.title,
+    message: props.post?.message
   });
 
   const [visible, setVisible] = useState(false);
@@ -24,6 +24,7 @@ const PostDetail = (props) => {
 
   useEffect(() => {
     getPostById();
+    console.log(props.posts);
   }, []);
 
   useEffect(() => {
@@ -101,6 +102,6 @@ const mapStateToProps = (state) => ({
   user: state.credentials.user,
   token: state.credentials.token,
   message: state.credentials.message,
-  posts: state.posts.posts
+  post: state.post
 });
 export default connect(mapStateToProps)(PostDetail);
