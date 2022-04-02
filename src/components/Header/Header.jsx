@@ -14,7 +14,7 @@ const Header = (props) => {
   const handleChange = (e) => {
     setText(e.target.value);
     if (e.key === "Enter") {
-      navigate("/nickname/" + text);
+      navigate("/search/" + text);
     }
   };
 
@@ -34,10 +34,6 @@ const Header = (props) => {
             <div className='designHeader'>
                 
                     <img src={logo} alt="" />
-                {/* <div className="headerSpace genreDesign">
-                </div> */}
-                
-                {/* <div className="headerSpace"></div> */}
                 <Input
        
         onKeyUp={handleChange}
@@ -53,11 +49,15 @@ const Header = (props) => {
     }else {
         return (
             <div className='designHeader'>
-                  <div className="headerSpace genreDesign">
-               
-                </div>
-                <div className="headerSpace"></div>
-                <div className="headerSpace linksDesign">
+                  <img src={logo} alt="" />
+                 
+                <Input
+       
+       onKeyUp={handleChange}
+       variant="default"
+       placeholder="Search User"
+     />
+                <div className="linksDesign">
                     <div className="link-header"onClick={()=>surf("/home")}>Home</div>   
                     <div className="link-header" onClick={()=>surf("/profile")}>{props.user?.nickname}</div>
                     <div className="link-header" onClick={()=>logOut()}>Logout</div>  
@@ -66,12 +66,6 @@ const Header = (props) => {
         )
     }
 }
-
-
-
-    
-
-
 
 const mapStateToProps = (state) => ({ user: state.credentials.user, token: state.credentials.token });
 export default connect(mapStateToProps)(Header);
