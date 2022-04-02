@@ -2,8 +2,8 @@ import React, {useEffect, useState} from 'react';
 import { LOGOUT } from "../../redux/types";
 import {useNavigate} from 'react-router-dom';
 import {connect} from 'react-redux';
-import { Button } from 'antd';
-
+import { Button, Input } from 'antd';
+import logo from '../../img/title.jpg'
 
 import './Header.css';
 
@@ -11,10 +11,13 @@ const Header = (props) => {
 
     let navigate = useNavigate();
 
-    useEffect(() => {
-      
-        console.log(props.token);
-    }, []);
+    const [text, setText] = useState("");
+  const handleChange = (e) => {
+    setText(e.target.value);
+    if (e.key === "Enter") {
+      navigate("/nickname/" + text);
+    }
+  };
 
     const surf = (lugar) => {
 
@@ -34,13 +37,21 @@ const Header = (props) => {
     if(!props.token){
         return (
             <div className='designHeader'>
-                <div className="headerSpace genreDesign">
                 
-                </div>
-                <div className="headerSpace"></div>
-                <div className="headerSpace linksDesign">
-                <Button type="primary"  onClick={()=>surf("/login")}>Login</Button>
-                <Button type="primary"  onClick={()=>surf("/register")}>Register</Button>  
+                    <img src={logo} alt="" />
+                {/* <div className="headerSpace genreDesign">
+                </div> */}
+                
+                {/* <div className="headerSpace"></div> */}
+                <Input
+       
+        onKeyUp={handleChange}
+        variant="default"
+        placeholder="Search User"
+      />
+                <div className="linksDesign">
+                <div type="primary"  className="link-header" onClick={()=>surf("/login")}>Login</div>
+                <div type="primary" className="link-header"  onClick={()=>surf("/register")}>Register</div>  
                 </div>
             </div>
         )
