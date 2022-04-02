@@ -1,9 +1,7 @@
 .designFooter{
     height: 10vh;
     width: 100vw;
-
-    background-color: rgb(0, 255, 60);
-
+    background-color: white;
     display: flex;
     align-items: center;
     flex-direction: row;

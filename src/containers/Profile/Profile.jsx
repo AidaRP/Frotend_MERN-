@@ -4,17 +4,20 @@ import { connect } from "react-redux";
 import { updateUser, getUserInfo } from "../../redux/actions/user";
 import { Modal, Button, Input, notification } from "antd";
 import "./Profile.css";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Profile = (props) => {
+  AOS.init();
   let navigate = useNavigate();
   //Hooks
   const [dataUser, setDataUser] = useState({
-    nickname: props.user.nickname,
-    image_path: props.user.image_path,
-    city: props.user.city,
-    email: props.user.email,
-    followers: props.user.followers,
-    following: props.user.following,
+    nickname: props.user?.nickname,
+    image_path: props.user?.image_path,
+    city: props.user?.city,
+    email: props.user?.email,
+    followers: props.user?.followers,
+    following: props.user?.following,
   });
 
   const [visible, setVisible] = useState(false);
@@ -28,13 +31,13 @@ const Profile = (props) => {
   }, []);
 
   useEffect(() => {
-    if (props.user.token === "") {
+    if (props.user?.token === "") {
       navigate("/");
     }
   });
   const onSubmit = async () => {
     try {
-      const res = await updateUser(props.user._id, dataUser);
+      const res = await updateUser(props.user?._id, dataUser);
       if (res) {
         getUserInfo();
           setVisible(false);
@@ -47,8 +50,8 @@ const Profile = (props) => {
 
   return (
     <div className="container">
-      <div className="card">
-        <h1>{props.user.image_path}</h1>
+      <div className="card" data-aos="zoom-in-down">
+        <h1>{props.user?.image_path}</h1>
         <p>
           <b>Nickname: </b>
           {dataUser.nickname}
@@ -69,7 +72,7 @@ const Profile = (props) => {
           <b>Following: </b>
           {dataUser.following}
         </p>
-        <Button type="primary" onClick={() => setVisible(true)}>
+        <Button type="dashed" onClick={() => setVisible(true)}>
           Edit Profile
         </Button>
         <Modal

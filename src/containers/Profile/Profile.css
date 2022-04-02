@@ -5,14 +5,16 @@
     justify-content: center;
     border-radius: 1em;
     padding: 2em;
+
   }
   .container{
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 1em;
     padding: 2em;
+    min-height: 70vh;
+    background-color: rgba(233, 233, 233, 0.855);
   }
   .profileRight {
     display: flex;
@@ -45,9 +47,7 @@
     background-color: hsl(0, 0%, 30%);
     border-radius: 0.2em;
   }
-  body {
-    background-color: beige
-  }
+  
   .card {
     display: flex;
     flex-direction: column;
@@ -56,8 +56,7 @@
     width: 30vw;
     min-height: 50vh;
     margin: 1em;
-    background-color: rgb(23, 69, 194);
-    color: white;
+    background-color: rgba(134, 225, 109, 0.141);
     padding: 1em;
     -webkit-box-shadow: 3px 4px 10px -1px rgba(0, 0, 0, 0.51);
     box-shadow: 3px 4px 10px -1px rgba(0, 0, 0, 0.51);

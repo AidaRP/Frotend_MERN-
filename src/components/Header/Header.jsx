@@ -8,7 +8,6 @@ import logo from '../../img/title.jpg'
 import './Header.css';
 
 const Header = (props) => {
-
     let navigate = useNavigate();
 
     const [text, setText] = useState("");
@@ -20,15 +19,11 @@ const Header = (props) => {
   };
 
     const surf = (lugar) => {
-
-        setTimeout(()=> {
             navigate(lugar);
-        }, 2000);
     }
 
     const logOut = () => { 
          props.dispatch({type:LOGOUT});
-        
          setTimeout(()=>{
              navigate("/");
          },1000);
@@ -63,9 +58,9 @@ const Header = (props) => {
                 </div>
                 <div className="headerSpace"></div>
                 <div className="headerSpace linksDesign">
-                    <div className="link-header" onClick={()=>surf("/profile")}>{props.user.nickname}</div>
+                    <div className="link-header"onClick={()=>surf("/home")}>Home</div>   
+                    <div className="link-header" onClick={()=>surf("/profile")}>{props.user?.nickname}</div>
                     <div className="link-header" onClick={()=>logOut()}>Logout</div>  
-                    <div className="link-header"onClick={()=>surf("/")}>Home</div>   
                 </div>
             </div>
         )

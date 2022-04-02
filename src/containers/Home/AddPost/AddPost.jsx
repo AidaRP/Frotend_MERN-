@@ -45,7 +45,7 @@ const AddPost = () => {
           rules={[
             {
               required: true,
-              message: "Please input your message!",
+              message: "Please input your description!",
             },
           ]}
         >
@@ -58,8 +58,8 @@ const AddPost = () => {
             span: 16,
           }}
         >
-          <Button type="primary" htmlType="submit">
-            Submit
+          <Button type="dashed" htmlType="submit">
+            Create post
           </Button>
         </Form.Item>
       </Form>

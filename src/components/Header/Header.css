@@ -1,6 +1,5 @@
 .designHeader {
   background-color: white;
-
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -12,38 +11,36 @@
   width: 25vw;
 }
 .headerSpace {
-    width: 25vw;
-    height: 20vh;
+  width: 25vw;
+  height: 20vh;
 
-    display: flex;
-    align-items: center;
-    flex-direction: row;
-    justify-content: center;
-   
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
 }
 .linksDesign {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-evenly;
-     
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: space-evenly;
 }
-.link-header{
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-end;
+.link-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  padding: 0.5em;
+  margin-right: 1em;
+  margin-bottom: 1em;
+  color: rgb(189, 189, 189);
+  font-size: 1.2em;
+  margin-left: 1em;
 
-    margin-right: 1em;
-    margin-bottom: 1em;
-    color: rgb(189, 189, 189);
-    font-size: 1.2em;
-    margin-left: 1em;
-
-    border-style: solid;
-    border-width: 0.1em;
-    border-radius: 0.2em;
+  border-style: solid;
+  border-width: 0.1em;
+  border-radius: 0.2em;
 }
-.link:hover {
-    font-weight: bold;
-    cursor: pointer;
+.link-header:hover {
+  font-weight: bold;
+  cursor: pointer;
 }
