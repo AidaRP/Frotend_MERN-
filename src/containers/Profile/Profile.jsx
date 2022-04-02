@@ -51,7 +51,7 @@ const Profile = (props) => {
   return (
     <div className="container">
       <div className="card" data-aos="zoom-in-down">
-        <h1>{props.user?.image_path}</h1>
+        
         <p>
           <b>Nickname: </b>
           {dataUser.nickname}

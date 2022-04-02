@@ -11,12 +11,19 @@ import "./Home.css";
 import { HeartOutlined, HeartFilled,DeleteOutlined  } from "@ant-design/icons";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import {useNavigate} from 'react-router-dom';
 
 const Home = (props) => {
     AOS.init();
   useEffect(() => {
     getPosts();
   }, []);
+
+  let navigate = useNavigate();
+
+  const surf = (lugar) => {
+          navigate(lugar);
+  }
 
   return (
     <div className="Home">
@@ -25,7 +32,10 @@ const Home = (props) => {
         const isAlreadyLiked = post.likes?.includes(props.user?._id);
 
         return (
-          <div className="father" data-aos="zoom-in-right">
+          <div className="father" data-aos="zoom-in-right" >
+            <div className="details" key={index} onClick={()=>surf("/postDetail")}>
+                Details 
+              </div>
             <div className="row1">
               <div className="title" key={index}>
                 Title: {post.title}
