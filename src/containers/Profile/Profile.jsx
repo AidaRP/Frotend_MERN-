@@ -66,11 +66,11 @@ const Profile = (props) => {
         </p>
         <p>
           <b>Followers: </b>
-          {dataUser.followers}
+          {dataUser.followers ? dataUser.followers.length : 0}
         </p>
         <p>
           <b>Following: </b>
-          {dataUser.following}
+          {dataUser.followers ? dataUser.following.length : 0}
         </p>
         <Button type="dashed" onClick={() => setVisible(true)}>
           Edit Profile
@@ -103,19 +103,6 @@ const Profile = (props) => {
             variant="filled"
             autoComplete="off"
             value={dataUser.city || ""}
-            onChange={(e) => {
-              fillData(e);
-            }}
-          />
-          <p>
-            <b>Image:</b>
-          </p>
-          <Input
-            name="image_path"
-            type="url"
-            variant="filled"
-            autoComplete="off"
-            value={dataUser.image_path || ""}
             onChange={(e) => {
               fillData(e);
             }}
