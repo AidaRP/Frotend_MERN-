@@ -10,11 +10,12 @@ import { POST_DETAIL } from "../../redux/types";
 
 const PostDetail = (props) => {
   AOS.init();
+  const { _id } = useParams();
   let navigate = useNavigate();
   //Hooks
   const [dataPost, setDataPost] = useState({
     title: props.post?.title,
-    message: props.post?.message
+    message: props.post?.message,
   });
 
   const [visible, setVisible] = useState(false);
@@ -23,6 +24,9 @@ const PostDetail = (props) => {
     setDataPost({ ...dataPost, [e.target.name]: e.target.value });
   };
 
+  useEffect(async () => {
+    await getPostById(_id);
+  }, []);
   useEffect(() => {
     getPostById();
     console.log(props.post);
