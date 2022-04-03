@@ -25,7 +25,7 @@ const PostDetail = (props) => {
 
   useEffect(() => {
     getPostById();
-    console.log(props);
+    console.log(props.post);
   }, []);
 
   useEffect(() => {
@@ -102,7 +102,6 @@ const PostDetail = (props) => {
 const mapStateToProps = (state) => ({
   user: state.credentials.user,
   token: state.credentials.token,
-  message: state.credentials.message,
-  post: state.post
+  post: state.posts.post
 });
 export default connect(mapStateToProps)(PostDetail);

@@ -13,6 +13,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import {useNavigate} from 'react-router-dom';
 import {POST_DETAIL} from "../../redux/types";
+import store from "../../redux/store";
 
 const Home = (props) => {
     AOS.init();
@@ -24,8 +25,8 @@ const Home = (props) => {
 
   const surf = (post) => {
 
-      props.dispatch({ type: POST_DETAIL, payload: post});
-      console.log(props)
+      store.dispatch({ type: POST_DETAIL, payload: post});
+      
       navigate("/postdetail");
   }      
   
@@ -35,25 +36,24 @@ const Home = (props) => {
       <AddPost />
       {props.posts.map((post, index) => {
         const isAlreadyLiked = post.likes?.includes(props.user?._id);
-
         return (
-          <div className="father" data-aos="zoom-in-right" >
-            <div className="details" key={index} onClick={()=>surf()}>
+          <div className="father" key={index} data-aos="zoom-in-right" >
+            <div className="details"  onClick={()=>surf()}>
                 Details 
               </div>
             <div className="row1">
-              <div className="title" key={index}>
+              <div className="title" >
                 Title: {post.title}
               </div>
-              <div className="message" key={index}>
+              <div className="message" >
                 Description:{post.message}
               </div>
             </div>
             <div className="row2">
-              <div className="comments" key={index}>
+              <div className="comments" >
                 Comments:{post.comments}
               </div>
-              <div className="likes" key={index}>
+              <div className="likes" >
                 Likes:{post.likes?.length}
                 {isAlreadyLiked ? (
                   <HeartFilled
