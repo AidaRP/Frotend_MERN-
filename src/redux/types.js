@@ -9,3 +9,8 @@ export const GET_POSTS = 'get_posts';
 export const POST_DETAIL = 'post_detail';
 export const DELETE_POST = 'delete_post';
 export const MODIFY_POST = 'modify_post';
+export const GET_COMMENTS = 'get_comments';
+export const COMMENT_DETAIL = 'comment_detail';
+export const DELETE_COMMENT = 'delete_comment';
+export const MODIFY_COMMENT = 'modify_comment';
+
