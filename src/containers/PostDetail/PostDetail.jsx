@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { connect } from "react-redux";
-import {  getPostById, updatePostById } from "../../redux/actions/posts";
+import { getPostById, updatePostById } from "../../redux/actions/posts";
 import { Modal, Button, Input, notification } from "antd";
 import "./PostDetail.css";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import { POST_DETAIL } from "../../redux/types";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const PostDetail = (props) => {
   AOS.init();
@@ -28,9 +27,11 @@ const PostDetail = (props) => {
     await getPostById(_id);
   }, []);
   useEffect(() => {
-    getPostById();
-    console.log(props.post);
-  }, []);
+    setDataPost({
+      title: props.post?.title,
+      message: props.post?.message,
+    });
+  }, [props.post]);
 
   useEffect(() => {
     if (props.user?.token === "") {
@@ -39,11 +40,11 @@ const PostDetail = (props) => {
   });
   const onSubmit = async () => {
     try {
-      const res = await updatePostById(props.user?._id, dataPost);
+      const res = await updatePostById(props.post?._id, dataPost);
       if (res) {
-        getPostById();
-          setVisible(false);
-          notification.success({ message: "Post actualizado con éxito" });
+        getPostById(props.post?._id);
+        setVisible(false);
+        notification.success({ message: "Post successfully updated" });
       }
     } catch (error) {
       console.log(error);
@@ -53,14 +54,13 @@ const PostDetail = (props) => {
   return (
     <div className="container">
       <div className="card" data-aos="zoom-in-down">
-        
         <p>
           <b>title: </b>
-          {dataPost.title}
+          {props.post?.title}
         </p>
         <p>
-          <b>Message: </b>
-          {dataPost.message}
+          <b>Description: </b>
+          {props.post?.message}
         </p>
         <Button type="dashed" onClick={() => setVisible(true)}>
           Edit Post
@@ -106,6 +106,6 @@ const PostDetail = (props) => {
 const mapStateToProps = (state) => ({
   user: state.credentials.user,
   token: state.credentials.token,
-  post: state.posts.post
+  post: state.posts.post,
 });
 export default connect(mapStateToProps)(PostDetail);

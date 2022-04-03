@@ -98,7 +98,7 @@ export const dislike = async (_id) => {
   return res.data;
 };
 
-export const updatePostById = async (id) => {
+export const updatePostById = async (id,data) => {
   try {
     const credentials = JSON.parse(
       localStorage.getItem("redux_localstorage_simple_credentials")
@@ -106,20 +106,11 @@ export const updatePostById = async (id) => {
     let config = {
       headers: { Authorization: credentials.token },
     };
-    const res = await axios.put(API_URL + `/posts/edit/${id}`, config);
+    const res = await axios.put(API_URL + `/posts/edit/${id}`,data, config);
     store.dispatch({ type: MODIFY_POST, payload: res.data });
-    getPostById();
     return res;
   } catch (error) {
     console.log(error);
   }
 };
-//revisar ruta
-// export const updatePost = async (dataPost) => {
-//   try {
-//     let res = await axios.put(API_URL + "/posts/edit",dataPost);
-//     return res;
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
+
