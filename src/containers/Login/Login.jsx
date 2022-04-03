@@ -24,7 +24,7 @@ const Login = (props) => {
     if (res.data.token) {
       notification.success({
         message:
-          "Bienvenida, bienvenido y/o bienvenide, !!!WELCOME TO THE PARTY🥳!!!",
+          "Welcome, you are logged in, you can now access the dashboard and create posts",
       });
     }
   };

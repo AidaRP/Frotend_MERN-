@@ -11,7 +11,7 @@ const Register = () => {
   const onFinish = async (values) => {
     const res = await register(values);
     if(!res.data.includes('contraseña')){
-      notification.success({ message: "Revisa tu correo",description: res.data });
+      notification.success({ message: "Check your email",description: res.data });
     }
     if(res.data.includes('contraseña')){
       notification.error({ message: "Error",description: res.data });

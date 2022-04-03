@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { LOGOUT } from "../../redux/types";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
-import { Button, Input } from "antd";
+import { Input,notification } from "antd";
 import logo from "../../img/title.jpg";
 
 import "./Header.css";
@@ -24,6 +24,11 @@ const Header = (props) => {
 
   const logOut = () => {
     props.dispatch({ type: LOGOUT });
+      notification.success({
+        message:
+          "Successfully logged out, see you soon, bye bye, !!!",
+  
+    })
     setTimeout(() => {
       navigate("/");
     }, 1000);

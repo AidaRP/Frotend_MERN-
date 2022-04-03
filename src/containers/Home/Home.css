@@ -52,7 +52,13 @@
   height: 6vh;
   width: 15vw;
 }
-
+.father a {
+  all:unset;
+  cursor:pointer;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+}
 .comments span{
   margin-left: 0.5em;
 }
