@@ -1,0 +1,20 @@
+.info404{
+    height: 80vh;
+    display: flex;
+    justify-content: flex-start;
+    padding: 0em;
+    margin: 0em;
+    background-color: rgb(103, 104, 104);
+    color: white;
+    flex-direction: column;
+    align-items: center;
+    background-size: 100%;
+    background-image: url(/src/img/Pure-CSS-404-Error-Page.gif);
+}
+.info404 a{
+    all:unset;
+    font-size: 5em;
+    cursor:pointer;
+    color: #FFFFFF;
+text-shadow: 1px 3px 0 #969696, 1px 13px 5px #aba8a8;
+}
