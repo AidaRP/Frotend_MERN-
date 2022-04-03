@@ -34,7 +34,7 @@ const Header = (props) => {
       <div className="designHeader">
         <img src={logo} alt="" />
         <div className="input-container">
-          <Input onKeyUp={handleChange} placeholder="Search User" />
+         
         </div>
         <div className="linksDesign">
           <div
