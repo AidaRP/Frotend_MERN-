@@ -32,7 +32,7 @@ const Header = (props) => {
   if (!props.token) {
     return (
       <div className="designHeader">
-        <img src={logo} alt="" />
+        <img src={logo} alt="" onClick={() => surf("/home")}/>
         <div className="input-container">
          
         </div>
@@ -57,7 +57,7 @@ const Header = (props) => {
   } else {
     return (
       <div className="designHeader">
-        <img src={logo} alt="" />
+        <img src={logo} alt="" onClick={() => surf("/home")}/>
         <div className="input-container">
           <Input onKeyUp={handleChange} placeholder="Search User" />
         </div>
