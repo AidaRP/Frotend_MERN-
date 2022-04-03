@@ -29,13 +29,13 @@ usuario pueda interactuar con las mismas.
 
 ![](/src/img/Home.jpg)
 
-![](//../src/img/Home_User.jpg)
+![](/src/img/Home_User.jpg)
 
-![](//../src/img/Login.jpg)
+![](/src/img/Login.jpg)
 
-![](//../src/img/Register.jpg)
+![](/src/img/Register.jpg)
 
-![](//../src/img/User_View.jpg)
+![](/src/img/User_View.jpg)
 
 ## ![](/src/img/Deploy.png)
 https://develop.d76jhgzfk4gwp.amplifyapp.com/
