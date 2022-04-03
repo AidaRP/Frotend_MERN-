@@ -22,7 +22,7 @@ const dataPostReducer = (state = initialState, action) => {
     case POST_DETAIL:
       return {
         ...state,
-        post: action.payload
+        post: action.payload.post
 
       };
       case GET_POSTS :
