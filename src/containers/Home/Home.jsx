@@ -8,28 +8,23 @@ import {
 } from "../../redux/actions/posts";
 import AddPost from "./AddPost/AddPost";
 import "./Home.css";
-import { HeartOutlined, HeartFilled,DeleteOutlined  } from "@ant-design/icons";
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-import {useNavigate} from 'react-router-dom';
-import {POST_DETAIL} from "../../redux/types";
-import store from "../../redux/store";
+import {
+  HeartOutlined,
+  HeartFilled,
+  DeleteOutlined,
+  CommentOutlined,
+} from "@ant-design/icons";
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useNavigate } from "react-router-dom";
 
 const Home = (props) => {
-    AOS.init();
+  AOS.init();
   useEffect(() => {
     getPosts();
   }, []);
 
   let navigate = useNavigate();
-
-  const surf = (post) => {
-
-      store.dispatch({ type: POST_DETAIL, payload: post});
-      
-      navigate("/postdetail");
-  }      
-  
 
   return (
     <div className="Home">
@@ -37,23 +32,16 @@ const Home = (props) => {
       {props.posts.map((post, index) => {
         const isAlreadyLiked = post.likes?.includes(props.user?._id);
         return (
-          <div className="father" key={index} data-aos="zoom-in-right" >
-            <div className="details"  onClick={()=>surf()}>
-                Details 
-              </div>
+          <div className="father" key={index} data-aos="zoom-in-right">
             <div className="row1">
-              <div className="title" >
-                Title: {post.title}
-              </div>
-              <div className="message" >
-                Description:{post.message}
-              </div>
+              <div className="title">Title: {post.title}</div>
             </div>
             <div className="row2">
-              <div className="comments" >
-                Comments:{post.comments}
+              <div className="comments">
+                <CommentOutlined />
+                <span>{post.commentsId ? post.commentsId?.length : 0}</span>
               </div>
-              <div className="likes" >
+              <div className="likes">
                 Likes:{post.likes?.length}
                 {isAlreadyLiked ? (
                   <HeartFilled
@@ -62,7 +50,11 @@ const Home = (props) => {
                         ? () => dislike(post._id)
                         : () => like(post._id)
                     }
-                    style={{ fontSize: '20px', color: '#08c', padding:'0.2em'}}
+                    style={{
+                      fontSize: "20px",
+                      color: "#08c",
+                      padding: "0.2em",
+                    }}
                   />
                 ) : (
                   <HeartOutlined
@@ -71,12 +63,18 @@ const Home = (props) => {
                         ? () => dislike(post._id)
                         : () => like(post._id)
                     }
-                    style={{ fontSize: '20px', color: '#08c', padding:'0.2em'}}
+                    style={{
+                      fontSize: "20px",
+                      color: "#08c",
+                      padding: "0.2em",
+                    }}
                   />
-                        )}
-                    
+                )}
                 {props.user?._id == post.creatorId?._id ? (
-                 <DeleteOutlined style={{ fontSize: '20px', color: 'red', padding:'1em'}} onClick={() => deletePostById(post._id)} />
+                  <DeleteOutlined
+                    style={{ fontSize: "20px", color: "red", padding: "1em" }}
+                    onClick={() => deletePostById(post._id)}
+                  />
                 ) : (
                   ""
                 )}

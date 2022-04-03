@@ -47,13 +47,15 @@
 }
 .comments {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 6vh;
   width: 15vw;
 }
 
+.comments span{
+  margin-left: 0.5em;
+}
 .post-container {
   display: flex;
   flex-direction: column;
@@ -65,3 +67,4 @@
 .details {
   cursor: pointer;
 }
+
