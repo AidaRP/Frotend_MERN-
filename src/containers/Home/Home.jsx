@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import {
   getPosts,
@@ -16,7 +16,8 @@ import {
 } from "@ant-design/icons";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { notification } from "antd";
 
 const Home = (props) => {
   AOS.init();
@@ -33,9 +34,11 @@ const Home = (props) => {
         const isAlreadyLiked = post.likes?.includes(props.user?._id);
         return (
           <div className="father" key={index} data-aos="zoom-in-right">
-            <div className="row1">
-              <div className="title">Title: {post.title}</div>
-            </div>
+            <Link to={"/postDetail/" + post._id}>
+              <div className="row1">
+                <div className="title">Title: {post.title}</div>
+              </div>
+            </Link>
             <div className="row2">
               <div className="comments">
                 <CommentOutlined />
@@ -73,7 +76,12 @@ const Home = (props) => {
                 {props.user?._id == post.creatorId?._id ? (
                   <DeleteOutlined
                     style={{ fontSize: "20px", color: "red", padding: "1em" }}
-                    onClick={() => deletePostById(post._id)}
+                    onClick={() => {
+                      deletePostById(post._id);
+                      notification.success({
+                        message: "Post successfully deleted",
+                      });
+                    }}
                   />
                 ) : (
                   ""
