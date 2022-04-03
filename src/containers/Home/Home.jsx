@@ -11,12 +11,24 @@ import "./Home.css";
 import { HeartOutlined, HeartFilled,DeleteOutlined  } from "@ant-design/icons";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import {useNavigate} from 'react-router-dom';
+import {POST_DETAIL} from "../../redux/types";
 
 const Home = (props) => {
     AOS.init();
   useEffect(() => {
     getPosts();
   }, []);
+
+  let navigate = useNavigate();
+
+  const surf = (post) => {
+
+      props.dispatch({ type: POST_DETAIL, payload: post});
+      console.log(props)
+      navigate("/postdetail");
+  }      
+  
 
   return (
     <div className="Home">
@@ -25,7 +37,10 @@ const Home = (props) => {
         const isAlreadyLiked = post.likes?.includes(props.user?._id);
 
         return (
-          <div className="father" data-aos="zoom-in-right">
+          <div className="father" data-aos="zoom-in-right" >
+            <div className="details" key={index} onClick={()=>surf()}>
+                Details 
+              </div>
             <div className="row1">
               <div className="title" key={index}>
                 Title: {post.title}

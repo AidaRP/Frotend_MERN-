@@ -1,33 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
-import { updateUser, getUserInfo } from "../../redux/actions/user";
+import {  getPostById, updatePostById } from "../../redux/actions/posts";
 import { Modal, Button, Input, notification } from "antd";
-import "./Profile.css";
+import "./PostDetail.css";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { POST_DETAIL } from "../../redux/types";
 
-const Profile = (props) => {
+const PostDetail = (props) => {
   AOS.init();
   let navigate = useNavigate();
   //Hooks
-  const [dataUser, setDataUser] = useState({
-    nickname: props.user?.nickname,
-    image_path: props.user?.image_path,
-    city: props.user?.city,
-    email: props.user?.email,
-    followers: props.user?.followers,
-    following: props.user?.following,
+  const [dataPost, setDataPost] = useState({
+    title: props.post?.title,
+    message: props.post?.message
   });
 
   const [visible, setVisible] = useState(false);
 
   const fillData = (e) => {
-    setDataUser({ ...dataUser, [e.target.name]: e.target.value });
+    setDataPost({ ...dataPost, [e.target.name]: e.target.value });
   };
 
   useEffect(() => {
-    getUserInfo();
+    getPostById();
+    console.log(props);
   }, []);
 
   useEffect(() => {
@@ -37,11 +35,11 @@ const Profile = (props) => {
   });
   const onSubmit = async () => {
     try {
-      const res = await updateUser(props.user?._id, dataUser);
+      const res = await updatePostById(props.user?._id, dataPost);
       if (res) {
-        getUserInfo();
+        getPostById();
           setVisible(false);
-          notification.success({ message: "Perfil actualizado con éxito" });
+          notification.success({ message: "Post actualizado con éxito" });
       }
     } catch (error) {
       console.log(error);
@@ -53,69 +51,44 @@ const Profile = (props) => {
       <div className="card" data-aos="zoom-in-down">
         
         <p>
-          <b>Nickname: </b>
-          {dataUser.nickname}
+          <b>title: </b>
+          {dataPost.title}
         </p>
         <p>
-          <b>City: </b>
-          {dataUser.city}
-        </p>
-        <p>
-          <b>Email: </b>
-          {dataUser.email}
-        </p>
-        <p>
-          <b>Followers: </b>
-          {dataUser.followers}
-        </p>
-        <p>
-          <b>Following: </b>
-          {dataUser.following}
+          <b>Message: </b>
+          {dataPost.message}
         </p>
         <Button type="dashed" onClick={() => setVisible(true)}>
-          Edit Profile
+          Edit Post
         </Button>
         <Modal
-          title="Edit Profile"
+          title="Edit Post"
           visible={visible}
           onOk={() => onSubmit()}
           onCancel={() => setVisible(false)}
         >
           <p>
-            <b>Nickname:</b>
+            <b>Title:</b>
           </p>
           <Input
-            name="nickname"
+            name="title"
             type="text"
             variant="filled"
             autoComplete="off"
-            value={dataUser.nickname || ""}
+            value={dataPost.title || ""}
             onChange={(e) => {
               fillData(e);
             }}
           />
           <p>
-            <b>City:</b>
+            <b>Message:</b>
           </p>
           <Input
-            name="city"
+            name="message"
             type="text"
             variant="filled"
             autoComplete="off"
-            value={dataUser.city || ""}
-            onChange={(e) => {
-              fillData(e);
-            }}
-          />
-          <p>
-            <b>Image:</b>
-          </p>
-          <Input
-            name="image_path"
-            type="url"
-            variant="filled"
-            autoComplete="off"
-            value={dataUser.image_path || ""}
+            value={dataPost.message || ""}
             onChange={(e) => {
               fillData(e);
             }}
@@ -130,5 +103,6 @@ const mapStateToProps = (state) => ({
   user: state.credentials.user,
   token: state.credentials.token,
   message: state.credentials.message,
+  post: state.post
 });
-export default connect(mapStateToProps)(Profile);
+export default connect(mapStateToProps)(PostDetail);
