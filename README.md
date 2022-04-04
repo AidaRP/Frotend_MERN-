@@ -43,7 +43,7 @@ usuario pueda interactuar con las mismas.
 ![](/src/img/Org.png)
 ## ![](/src/img/Trello.jpg)
 ## ![](/src/img/Deploy.png)
-https://develop.d76jhgzfk4gwp.amplifyapp.com/
+https://main.d76jhgzfk4gwp.amplifyapp.com/
 
 # ![](/src/img/Auth.png)
 https://github.com/XNycX
