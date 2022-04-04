@@ -11,6 +11,7 @@ import PostDetail from "./containers/PostDetail/PostDetail";
 import Search from './components/Search/SearchUser';
 import NotFound from "./components/NotFound/NotFound";
 import PrivateZone from "./guards/PrivateZone";
+import Users from "./containers/Users/Users";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/postDetail/:_id" element={<PostDetail />} />
           <Route path="/search/:nickname" element={<Search />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="/users" element={<Users />} />
 
         </Routes>
       <Footer/>

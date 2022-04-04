@@ -76,6 +76,13 @@ const Header = (props) => {
           <div className="link-header" onClick={() => logOut()}>
             Logout
           </div>
+          <div
+            type="primary"
+            className="link-header"
+            onClick={() => surf("/users")}
+          >
+            Users
+          </div>
         </div>
       </div>
     );
