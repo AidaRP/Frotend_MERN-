@@ -109,6 +109,16 @@ const Profile = (props) => {
           />
         </Modal>
       </div>
+      <div className="followers">
+      <p>
+          <b>Followers: </b>
+          {dataUser.followers}
+        </p>
+        <p>
+          <b>Following: </b>
+          {dataUser.followers}
+        </p>
+      </div>
     </div>
   );
 };
