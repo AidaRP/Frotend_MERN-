@@ -2,6 +2,7 @@
 
 ## ![](/src/img/Expli.png)
 La realización del proyecto consiste en la creación de una red social por grupos, donde los grupos deberán satisfacer los requisitos mínimos para el proyecto este apto siendo los siguientes:
+
 ● El uso de Hooks, utilizándolos en tus componentes.
 
 ● Estructura de carpetas bien organizada (components, containers, etc.)
@@ -39,6 +40,8 @@ usuario pueda interactuar con las mismas.
 
 ![](/src/img/users.jpg)
 
+![](/src/img/Org.png)
+## ![](/src/img/Trello.jpg)
 ## ![](/src/img/Deploy.png)
 https://develop.d76jhgzfk4gwp.amplifyapp.com/
 
