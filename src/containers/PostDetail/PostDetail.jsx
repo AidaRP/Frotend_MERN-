@@ -14,7 +14,7 @@ const PostDetail = (props) => {
   //Hooks
   const [dataPost, setDataPost] = useState({
     title: props.post?.title,
-    message: props.post?.message,
+    message: props.post?.message
   });
 
   const [visible, setVisible] = useState(false);
@@ -51,6 +51,7 @@ const PostDetail = (props) => {
     }
   };
 
+  if(props.post?.creatorId === props.user?._id){
   return (
     <div className="container">
       <div className="card" data-aos="zoom-in-down">
@@ -101,7 +102,24 @@ const PostDetail = (props) => {
       </div>
     </div>
   );
-};
+}else{
+  return (
+    <div className="container">
+      <div className="card" data-aos="zoom-in-down">
+        <p>
+          <b>title: </b>
+          {props.post?.title}
+        </p>
+        <p>
+          <b>Description: </b>
+          {props.post?.message}
+        </p>
+        </div>
+    </div>
+  );
+}
+
+}
 
 const mapStateToProps = (state) => ({
   user: state.credentials.user,
