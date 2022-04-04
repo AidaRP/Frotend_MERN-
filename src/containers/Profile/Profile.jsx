@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { connect } from "react-redux";
-import { updateUser, getUserInfo } from "../../redux/actions/user";
+import { updateUser, getUserInfo, getUsers } from "../../redux/actions/user";
 import { Modal, Button, Input, notification } from "antd";
 import "./Profile.css";
 import AOS from 'aos';
@@ -11,6 +11,7 @@ const Profile = (props) => {
   AOS.init();
   let navigate = useNavigate();
   //Hooks
+
   const [dataUser, setDataUser] = useState({
     nickname: props.user?.nickname,
     image_path: props.user?.image_path,
@@ -27,6 +28,7 @@ const Profile = (props) => {
   };
 
   useEffect(() => {
+    
     getUserInfo();
   }, []);
 

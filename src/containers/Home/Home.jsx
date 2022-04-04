@@ -23,15 +23,19 @@ const Home = (props) => {
   AOS.init();
   useEffect(() => {
     getPosts();
+    console.log(props.posts);
   }, []);
 
-  let navigate = useNavigate();
+  //let name = props.posts.findOne({_id:props.post._id }).populate("creatorId");
 
+  let navigate = useNavigate();
+  
   return (
     <div className="Home">
       <AddPost />
       {props.posts.map((post, index) => {
         const isAlreadyLiked = post.likes?.includes(props.user?._id);
+        
         return (
           <div className="father" key={index} data-aos="zoom-in-right">
             <Link to={"/postDetail/" + post._id}>
