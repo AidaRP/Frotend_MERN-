@@ -37,6 +37,7 @@ const Home = (props) => {
             <Link to={"/postDetail/" + post._id}>
               <div className="row1">
                 <div className="title">Title: {post.title}</div>
+                <div className="description">Message: {post.message}</div>
               </div>
             </Link>
             <div className="row2">
