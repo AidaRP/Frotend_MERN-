@@ -37,6 +37,8 @@ usuario pueda interactuar con las mismas.
 
 ![](/src/img/User_View.jpg)
 
+![](/src/img/users.jpg)
+
 ## ![](/src/img/Deploy.png)
 https://develop.d76jhgzfk4gwp.amplifyapp.com/
 
