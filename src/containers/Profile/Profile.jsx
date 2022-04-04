@@ -70,7 +70,7 @@ const Profile = (props) => {
         </p>
         <p>
           <b>Following: </b>
-          {dataUser.followers ? dataUser.following.length : 0}
+          {dataUser.following ? dataUser.following.length : 0}
         </p>
         <Button type="dashed" onClick={() => setVisible(true)}>
           Edit Profile
@@ -116,7 +116,7 @@ const Profile = (props) => {
         </p>
         <p>
           <b>Following: </b>
-          {dataUser.followers}
+          {dataUser.following}
         </p>
       </div>
     </div>
